@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DataManagerKit
 
 class ViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class ViewController: UIViewController {
     // MARK: data -
     private var users = PlistHandler.getUsersIds() {
         didSet {
+            PlistHandler.save(users)
             changeView()
             usersTableView.reloadData()
         }
@@ -50,6 +52,7 @@ class ViewController: UIViewController {
     func setUpUsersTableView() {
         usersTableView.delegate = self
         usersTableView.dataSource = self
+        usersTableView.tableFooterView = UIView()
         usersTableView.register(UserTableViewCell.self, forCellReuseIdentifier: "UserTableViewCell")
         usersTableView.isHidden = users.count == 0 ? true : false
     }
@@ -59,10 +62,15 @@ class ViewController: UIViewController {
     func addYandexIdButtonDidTap () {
         addYandexIdAlert { newUserId in
             if !newUserId.isEmpty {         // add error handler
-                if YandexApiCaller.isUser(with: newUserId) {
-                    PlistHandler.add(newUserId)
-                    self.users = PlistHandler.getUsersIds()
-                } 
+                YandexApiCaller.isUser(with: newUserId) { (isRightUserId, username) in
+                    DispatchQueue.main.async {
+                        if isRightUserId, let username = username {
+                            self.users.append(username)
+                        } else {
+                            self.errorAlert(message: "Попробуйте ввести Id еще раз")
+                        }
+                    }
+                }
             }
         }
     }
@@ -70,7 +78,7 @@ class ViewController: UIViewController {
     
 }
 
-// MARK: UITableViewDelegate + DataSource -
+// MARK: UITableView extension -
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,6 +90,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         userCell.setUpCell(for: users[indexPath.row])
         
         return userCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            users.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        }
     }
 }
 
@@ -104,5 +125,13 @@ extension ViewController {
         alertController.addAction(actionCancel)
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func errorAlert(message: String) {
+        let alerController = UIAlertController(title: "Упс", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alerController.addAction(okAction)
+        
+        present(alerController, animated: true, completion: nil)
     }
 }
