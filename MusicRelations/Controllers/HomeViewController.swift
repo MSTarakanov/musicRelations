@@ -75,8 +75,6 @@ class HomeViewController: UIViewController {
             }
         }
     }
-    
-    
 }
 
 // MARK: UITableView extension -
