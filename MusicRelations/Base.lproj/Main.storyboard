@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -8,10 +8,41 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--After Launch View Controller-->
+        <scene sceneID="yhi-i3-HOq">
+            <objects>
+                <viewController storyboardIdentifier="AfterLaunchVC" id="uoU-2G-wIV" customClass="AfterLaunchViewController" customModule="MusicRelations" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eqd-FY-McM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="6rx-3l-KKq">
+                                <rect key="frame" x="84.5" y="330.5" width="245" height="245"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6rx-3l-KKq" secondAttribute="height" multiplier="1:1" id="uJr-ap-gCS"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rHC-tK-4Rf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6rx-3l-KKq" firstAttribute="centerX" secondItem="rHC-tK-4Rf" secondAttribute="centerX" id="eUT-L3-HE0"/>
+                            <constraint firstItem="6rx-3l-KKq" firstAttribute="centerY" secondItem="rHC-tK-4Rf" secondAttribute="centerY" id="joT-37-Tkw"/>
+                            <constraint firstItem="6rx-3l-KKq" firstAttribute="height" secondItem="rHC-tK-4Rf" secondAttribute="height" multiplier="0.3" id="q0G-a6-S5F"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="heightConstraint" destination="q0G-a6-S5F" id="gmq-zw-qy9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4oh-B2-VEy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="168" y="82"/>
+        </scene>
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MainVC" id="BYZ-38-t0r" customClass="ViewController" customModule="MusicRelations" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" id="BYZ-38-t0r" customClass="HomeViewController" customModule="MusicRelations" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,6 +85,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="logo" width="1024" height="1024"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

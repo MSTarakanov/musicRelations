@@ -18,11 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let mainNavController = UINavigationController()
+//        let mainNavController = UINavigationController()
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
-        mainNavController.viewControllers = [mainViewController]
-        window?.rootViewController = mainNavController
+        let afterLaunchViewController = mainStoryboard.instantiateViewController(withIdentifier: "AfterLaunchVC")
+//        mainNavController.viewControllers = [mainViewController]
+        window?.rootViewController = afterLaunchViewController
         window?.makeKeyAndVisible()
         
     }

@@ -8,7 +8,7 @@
 import UIKit
 import DataManagerKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     // MARK: Outlets -
     @IBOutlet weak var addYandexIdButton: UIButton!
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: UITableView extension -
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         users.count
@@ -107,7 +107,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: Alerts -
-extension ViewController {
+extension HomeViewController {
     func addYandexIdAlert(completion: @escaping (String) -> Void) {
         let alertController = UIAlertController(title: "Почта: mstarakanov@yandex.ru", message: "ID: mstarakanov", preferredStyle: .alert)
         
