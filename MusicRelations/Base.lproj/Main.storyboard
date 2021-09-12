@@ -32,7 +32,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="heightConstraint" destination="q0G-a6-S5F" id="gmq-zw-qy9"/>
+                        <outlet property="heightLogoConstraint" destination="q0G-a6-S5F" id="xuv-wL-gfb"/>
+                        <outlet property="logoImage" destination="6rx-3l-KKq" id="OJR-xX-TCk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4oh-B2-VEy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
