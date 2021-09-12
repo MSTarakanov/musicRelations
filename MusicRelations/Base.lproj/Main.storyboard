@@ -21,7 +21,9 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdO-3L-90u">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
-                                        <state key="normal" title="Добавить новый яндекс ID"/>
+                                        <state key="normal" title="Добавить новый яндекс ID">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n1x-bY-QlN">
                                         <rect key="frame" x="0.0" y="41" width="414" height="777"/>
