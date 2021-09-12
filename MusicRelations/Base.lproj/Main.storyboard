@@ -67,11 +67,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gPy-Vf-jUb" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="4HH-aV-wbf"/>
-                            <constraint firstItem="n1x-bY-QlN" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.95" id="Mr1-os-XWy"/>
-                            <constraint firstItem="gPy-Vf-jUb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ObX-GT-e3x"/>
-                            <constraint firstItem="gPy-Vf-jUb" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" id="Zsw-sP-l9K"/>
-                            <constraint firstItem="n1x-bY-QlN" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="uNL-kU-D2C"/>
+                            <constraint firstItem="gPy-Vf-jUb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Es8-YZ-FyB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gPy-Vf-jUb" secondAttribute="bottom" id="N1u-Di-fJQ"/>
+                            <constraint firstItem="gPy-Vf-jUb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dUn-KQ-W1a"/>
+                            <constraint firstItem="gPy-Vf-jUb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="x0M-Sw-eS4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nn4-M6-l13"/>

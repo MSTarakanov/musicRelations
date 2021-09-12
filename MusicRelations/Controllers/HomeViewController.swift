@@ -66,9 +66,13 @@ class HomeViewController: UIViewController {
                 YandexApiCaller.isUser(with: newUserId) { (isRightUserId, username) in
                     DispatchQueue.main.async {
                         if isRightUserId, let username = username {
-                            self.users.append(username)
+                            if self.users.contains(username) {
+                                self.errorAlert(message: "Такой ID уже используется")
+                            } else {
+                                self.users.append(username)
+                            }
                         } else {
-                            self.errorAlert(message: "Попробуйте ввести Id еще раз")
+                            self.errorAlert(message: "Попробуйте ввести ID еще раз")
                         }
                     }
                 }
