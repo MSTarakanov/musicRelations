@@ -12,7 +12,9 @@ class PlaylistTableViewCell: UITableViewCell {
     @IBOutlet weak var playlistImage: UIImageView!
     @IBOutlet weak var playlistLabel: UILabel!
     @IBOutlet weak var amountOfTracksLabel: UILabel!
+    @IBOutlet weak var tracksTextLabel: UILabel!
     
+    static let id = "PlaylistTableViewCellID"
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +25,17 @@ class PlaylistTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configureCell(by playlistModel: PlaylistModel) {
+        playlistLabel.text = playlistModel.playlistName
+        if let amount = playlistModel.trackAmount {
+            amountOfTracksLabel.text = "\(amount)"
+        } else {
+            amountOfTracksLabel.isHidden = true
+            tracksTextLabel.isHidden = true
+        }
+        
     }
     
     

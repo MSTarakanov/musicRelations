@@ -9,8 +9,12 @@ import UIKit
 
 class PlaylistsViewController: UIViewController {
     // MARK: Data -
-    var userId: String = ""
-    var playlists: PlaylistResponseModel?
+    var user: UserModel?
+    var playlists = [PlaylistModel]() {
+        didSet {
+            self.playlistsTableView.reloadData()
+        }
+    }
     
     // MARK: UI vars -
     var playlistsTableView = UITableView()
@@ -18,9 +22,17 @@ class PlaylistsViewController: UIViewController {
     // MARK: VC Lifycycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = userId
-        YandexApiCaller.getPlaylists(by: userId)
-        setUpPlaylistsTableView()
+        if let userId = user?.userId, let username = user?.username {
+            self.title = username
+            YandexApiCaller.getPlaylists(by: userId) { playlistResponseModel in
+                DispatchQueue.main.async {
+                    self.playlists = PlaylistModel.getPlaylists(from: playlistResponseModel)
+                }
+            }
+            setUpPlaylistsTableView()
+        } else {
+            // messageErorr
+        }
     }
     
     // MARK: SetUp functions -
@@ -28,6 +40,7 @@ class PlaylistsViewController: UIViewController {
         playlistsTableView.frame = view.safeAreaLayoutGuide.layoutFrame
         playlistsTableView.delegate = self
         playlistsTableView.dataSource = self
+        playlistsTableView.register(UINib(nibName: "PlaylistTableViewCell", bundle: nil), forCellReuseIdentifier: PlaylistTableViewCell.id)
         view.addSubview(playlistsTableView)
     }
 }
@@ -36,11 +49,15 @@ class PlaylistsViewController: UIViewController {
 
 extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return playlists.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let playlistCell = tableView.dequeueReusableCell(withIdentifier: PlaylistTableViewCell.id, for: indexPath) as! PlaylistTableViewCell
+//        let playlistCell = UITableViewCell()
+        playlistCell.configureCell(by: playlists[indexPath.row])
+        
+        return playlistCell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

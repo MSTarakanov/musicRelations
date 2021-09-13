@@ -17,47 +17,17 @@
 		0946F04426EA7BD800B7AB48 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946F04326EA7BD800B7AB48 /* UserTableViewCell.swift */; };
 		098D769D26EC094700088D2A /* UserResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946F09026EAD3A200B7AB48 /* UserResponseModel.swift */; };
 		098D769E26EC096500088D2A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946F08C26EAD17600B7AB48 /* Constants.swift */; };
-		098D76D226EC0B2800088D2A /* DataManagerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 098D76C926EC0B2800088D2A /* DataManagerKit.framework */; };
-		098D76DE26EC0B2800088D2A /* DataManagerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 098D76C926EC0B2800088D2A /* DataManagerKit.framework */; };
-		098D76DF26EC0B2800088D2A /* DataManagerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 098D76C926EC0B2800088D2A /* DataManagerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		098D76E926EC0B8D00088D2A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946F08C26EAD17600B7AB48 /* Constants.swift */; };
-		098D76EC26EC137D00088D2A /* UserResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946F09026EAD3A200B7AB48 /* UserResponseModel.swift */; };
 		098D76EE26EE542A00088D2A /* AfterLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D76ED26EE542A00088D2A /* AfterLaunchViewController.swift */; };
 		098D76F026EEAAF800088D2A /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D76EF26EEAAF800088D2A /* UIExtensions.swift */; };
 		098D76F226EF747C00088D2A /* PlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D76F126EF747C00088D2A /* PlaylistsViewController.swift */; };
 		098D76F526EF78BA00088D2A /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D76F326EF78BA00088D2A /* PlaylistTableViewCell.swift */; };
 		098D76F626EF78BA00088D2A /* PlaylistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 098D76F426EF78BA00088D2A /* PlaylistTableViewCell.xib */; };
 		098D76F826EF7D0800088D2A /* PlaylistResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D76F726EF7D0800088D2A /* PlaylistResponseModel.swift */; };
-		098D76F926EF85A900088D2A /* PlaylistResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D76F726EF7D0800088D2A /* PlaylistResponseModel.swift */; };
 		098D76FD26EF9B5D00088D2A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D76FC26EF9B5D00088D2A /* UserModel.swift */; };
-		098D76FE26EF9C3C00088D2A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D76FC26EF9B5D00088D2A /* UserModel.swift */; };
 		099D8F7626EFA2010028D5C2 /* YandexApiCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946F08E26EAD2F200B7AB48 /* YandexApiCaller.swift */; };
 		099D8F7726EFA2040028D5C2 /* UsersWithUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946F08A26EACB1200B7AB48 /* UsersWithUserDefaults.swift */; };
+		099D8F7926EFA9700028D5C2 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D8F7826EFA9700028D5C2 /* PlaylistModel.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		098D76D326EC0B2800088D2A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0946EFFA26EA5C7E00B7AB48 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 098D76C826EC0B2800088D2A;
-			remoteInfo = DataManagerKit;
-		};
-		098D76D526EC0B2800088D2A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0946EFFA26EA5C7E00B7AB48 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0946F00126EA5C7E00B7AB48;
-			remoteInfo = MusicRelations;
-		};
-		098D76DC26EC0B2800088D2A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0946EFFA26EA5C7E00B7AB48 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 098D76C826EC0B2800088D2A;
-			remoteInfo = DataManagerKit;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		0946F08626EACA5E00B7AB48 /* Embed Frameworks */ = {
@@ -66,7 +36,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				098D76DF26EC0B2800088D2A /* DataManagerKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,8 +57,6 @@
 		0946F08C26EAD17600B7AB48 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0946F08E26EAD2F200B7AB48 /* YandexApiCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexApiCaller.swift; sourceTree = "<group>"; };
 		0946F09026EAD3A200B7AB48 /* UserResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponseModel.swift; sourceTree = "<group>"; };
-		098D76C926EC0B2800088D2A /* DataManagerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataManagerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		098D76D126EC0B2800088D2A /* DataManagerKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataManagerKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		098D76ED26EE542A00088D2A /* AfterLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterLaunchViewController.swift; sourceTree = "<group>"; };
 		098D76EF26EEAAF800088D2A /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		098D76F126EF747C00088D2A /* PlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +64,7 @@
 		098D76F426EF78BA00088D2A /* PlaylistTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistTableViewCell.xib; sourceTree = "<group>"; };
 		098D76F726EF7D0800088D2A /* PlaylistResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistResponseModel.swift; sourceTree = "<group>"; };
 		098D76FC26EF9B5D00088D2A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		099D8F7826EFA9700028D5C2 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,22 +72,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				098D76DE26EC0B2800088D2A /* DataManagerKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		098D76C626EC0B2800088D2A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		098D76CE26EC0B2800088D2A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				098D76D226EC0B2800088D2A /* DataManagerKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				0946F00226EA5C7E00B7AB48 /* MusicRelations.app */,
-				098D76C926EC0B2800088D2A /* DataManagerKit.framework */,
-				098D76D126EC0B2800088D2A /* DataManagerKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -230,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				098D76FC26EF9B5D00088D2A /* UserModel.swift */,
+				099D8F7826EFA9700028D5C2 /* PlaylistModel.swift */,
 			);
 			path = UIModel;
 			sourceTree = "<group>";
@@ -245,16 +196,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		098D76C426EC0B2800088D2A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		0946F00126EA5C7E00B7AB48 /* MusicRelations */ = {
 			isa = PBXNativeTarget;
@@ -268,49 +209,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				098D76DD26EC0B2800088D2A /* PBXTargetDependency */,
 			);
 			name = MusicRelations;
 			productName = MusicRelations;
 			productReference = 0946F00226EA5C7E00B7AB48 /* MusicRelations.app */;
 			productType = "com.apple.product-type.application";
-		};
-		098D76C826EC0B2800088D2A /* DataManagerKit */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 098D76E026EC0B2800088D2A /* Build configuration list for PBXNativeTarget "DataManagerKit" */;
-			buildPhases = (
-				098D76C426EC0B2800088D2A /* Headers */,
-				098D76C526EC0B2800088D2A /* Sources */,
-				098D76C626EC0B2800088D2A /* Frameworks */,
-				098D76C726EC0B2800088D2A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DataManagerKit;
-			productName = DataManagerKit;
-			productReference = 098D76C926EC0B2800088D2A /* DataManagerKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		098D76D026EC0B2800088D2A /* DataManagerKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 098D76E326EC0B2800088D2A /* Build configuration list for PBXNativeTarget "DataManagerKitTests" */;
-			buildPhases = (
-				098D76CD26EC0B2800088D2A /* Sources */,
-				098D76CE26EC0B2800088D2A /* Frameworks */,
-				098D76CF26EC0B2800088D2A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				098D76D426EC0B2800088D2A /* PBXTargetDependency */,
-				098D76D626EC0B2800088D2A /* PBXTargetDependency */,
-			);
-			name = DataManagerKitTests;
-			productName = DataManagerKitTests;
-			productReference = 098D76D126EC0B2800088D2A /* DataManagerKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -323,13 +226,6 @@
 				TargetAttributes = {
 					0946F00126EA5C7E00B7AB48 = {
 						CreatedOnToolsVersion = 12.5.1;
-					};
-					098D76C826EC0B2800088D2A = {
-						CreatedOnToolsVersion = 12.5.1;
-					};
-					098D76D026EC0B2800088D2A = {
-						CreatedOnToolsVersion = 12.5.1;
-						TestTargetID = 0946F00126EA5C7E00B7AB48;
 					};
 				};
 			};
@@ -347,8 +243,6 @@
 			projectRoot = "";
 			targets = (
 				0946F00126EA5C7E00B7AB48 /* MusicRelations */,
-				098D76C826EC0B2800088D2A /* DataManagerKit */,
-				098D76D026EC0B2800088D2A /* DataManagerKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -365,20 +259,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		098D76C726EC0B2800088D2A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		098D76CF26EC0B2800088D2A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -387,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				098D76F226EF747C00088D2A /* PlaylistsViewController.swift in Sources */,
+				099D8F7926EFA9700028D5C2 /* PlaylistModel.swift in Sources */,
 				098D76F826EF7D0800088D2A /* PlaylistResponseModel.swift in Sources */,
 				099D8F7626EFA2010028D5C2 /* YandexApiCaller.swift in Sources */,
 				0946F00A26EA5C7E00B7AB48 /* HomeViewController.swift in Sources */,
@@ -404,43 +285,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		098D76C526EC0B2800088D2A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				098D76E926EC0B8D00088D2A /* Constants.swift in Sources */,
-				098D76F926EF85A900088D2A /* PlaylistResponseModel.swift in Sources */,
-				098D76EC26EC137D00088D2A /* UserResponseModel.swift in Sources */,
-				098D76FE26EF9C3C00088D2A /* UserModel.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		098D76CD26EC0B2800088D2A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		098D76D426EC0B2800088D2A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 098D76C826EC0B2800088D2A /* DataManagerKit */;
-			targetProxy = 098D76D326EC0B2800088D2A /* PBXContainerItemProxy */;
-		};
-		098D76D626EC0B2800088D2A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0946F00126EA5C7E00B7AB48 /* MusicRelations */;
-			targetProxy = 098D76D526EC0B2800088D2A /* PBXContainerItemProxy */;
-		};
-		098D76DD26EC0B2800088D2A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 098D76C826EC0B2800088D2A /* DataManagerKit */;
-			targetProxy = 098D76DC26EC0B2800088D2A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0946F00B26EA5C7E00B7AB48 /* Main.storyboard */ = {
@@ -618,100 +463,6 @@
 			};
 			name = Release;
 		};
-		098D76E126EC0B2800088D2A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 8A555HCVM2;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DataManagerKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = mcson.DataManagerKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		098D76E226EC0B2800088D2A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 8A555HCVM2;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DataManagerKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = mcson.DataManagerKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		098D76E426EC0B2800088D2A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8A555HCVM2;
-				INFOPLIST_FILE = DataManagerKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = mcson.DataManagerKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MusicRelations.app/MusicRelations";
-			};
-			name = Debug;
-		};
-		098D76E526EC0B2800088D2A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8A555HCVM2;
-				INFOPLIST_FILE = DataManagerKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = mcson.DataManagerKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MusicRelations.app/MusicRelations";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -729,24 +480,6 @@
 			buildConfigurations = (
 				0946F01A26EA5C7F00B7AB48 /* Debug */,
 				0946F01B26EA5C7F00B7AB48 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		098D76E026EC0B2800088D2A /* Build configuration list for PBXNativeTarget "DataManagerKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				098D76E126EC0B2800088D2A /* Debug */,
-				098D76E226EC0B2800088D2A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		098D76E326EC0B2800088D2A /* Build configuration list for PBXNativeTarget "DataManagerKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				098D76E426EC0B2800088D2A /* Debug */,
-				098D76E526EC0B2800088D2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

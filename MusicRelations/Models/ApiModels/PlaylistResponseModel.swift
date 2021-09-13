@@ -6,17 +6,17 @@
 //
 
 
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let playlistResponseModel = try? newJSONDecoder().decode(PlaylistResponseModel.self, from: jsonData)
+
 import Foundation
 
-// MARK: - PlaylistResponse
+// MARK: - PlaylistResponseModel
 struct PlaylistResponseModel: Codable {
     let invocationInfo: InvocationInfo?
-    let result: [Result]?
-    
-    enum CodingKeys: String, CodingKey {
-        case invocationInfo
-        case result = "result"
-    }
+    let result: [PlaylistResult]?
 }
 
 // MARK: - Result
@@ -28,9 +28,7 @@ struct PlaylistResult: Codable {
     let title: String?
     let revision, snapshot, trackCount: Int?
     let visibility: String?
-    let collective: Bool?
-    let created, modified: Date?
-    let isBanner, isPremiere: Bool?
+    let collective, isBanner, isPremiere: Bool?
     let durationMS: Int?
     let cover: Cover?
     let ogImage: String?
@@ -38,7 +36,7 @@ struct PlaylistResult: Codable {
     enum CodingKeys: String, CodingKey {
         case owner
         case playlistUUID = "playlistUuid"
-        case available, uid, kind, title, revision, snapshot, trackCount, visibility, collective, created, modified, isBanner, isPremiere
+        case available, uid, kind, title, revision, snapshot, trackCount, visibility, collective, isBanner, isPremiere
         case durationMS = "durationMs"
         case cover, ogImage
     }
