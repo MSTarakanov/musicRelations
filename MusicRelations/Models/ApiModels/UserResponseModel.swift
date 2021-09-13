@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - UserModel
-struct UserModel: Codable {
+struct UserResponseModel: Codable {
     let invocationInfo: InvocationInfo?
     let result: Result?
 }

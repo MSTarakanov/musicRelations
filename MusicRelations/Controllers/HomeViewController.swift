@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var usersTableView: UITableView!
     
     // MARK: data -
-    private var users = PlistHandler.getUsersIds() {
+    private var users: [UserModel] = PlistHandler.getUsers() {
         didSet {
             PlistHandler.save(users)
             changeView()
@@ -46,7 +46,6 @@ class HomeViewController: UIViewController {
     
     // MARK: setUp functions -
     func setUpAddYandexButton() {
-        addYandexIdButton.sizeToFit()
         addYandexIdButton.addTarget(self, action: #selector(addYandexIdButtonDidTap), for: .touchUpInside)
     }
     
@@ -63,13 +62,15 @@ class HomeViewController: UIViewController {
     func addYandexIdButtonDidTap () {
         addYandexIdAlert { newUserId in
             if !newUserId.isEmpty {         // add error handler
-                YandexApiCaller.isUser(with: newUserId) { (isRightUserId, username) in
+                YandexApiCaller.isUser(with: newUserId) { (isRightUserId, user) in
                     DispatchQueue.main.async {
-                        if isRightUserId, let username = username {
-                            if self.users.contains(username) {
+                        if isRightUserId, let user = user {
+                            if self.users.contains(where: { user in
+                                user.userId == newUserId
+                            }) {
                                 self.errorAlert(message: "Такой ID уже используется")
                             } else {
-                                self.users.append(username)
+                                self.users.append(user)
                             }
                         } else {
                             self.errorAlert(message: "Попробуйте ввести ID еще раз")
@@ -97,6 +98,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let vc = PlaylistsViewController()
+        if let userIdUnwrapped = users[indexPath.row].userId {
+            vc.userId = userIdUnwrapped
+        }
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
