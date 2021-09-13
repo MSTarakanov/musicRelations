@@ -43,6 +43,7 @@ class PlaylistsViewController: UIViewController {
         playlistsTableView.dataSource = self
         playlistsTableView.register(UINib(nibName: "PlaylistTableViewCell", bundle: nil), forCellReuseIdentifier: PlaylistTableViewCell.id)
         playlistsTableView.register(LikedAlbumHeader.self, forHeaderFooterViewReuseIdentifier: LikedAlbumHeader.id)
+        self.playlistsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         view.addSubview(playlistsTableView)
     }
 }

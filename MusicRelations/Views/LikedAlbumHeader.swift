@@ -20,8 +20,9 @@ class LikedAlbumHeader: UITableViewHeaderFooterView {
     
     private let albumLabel: UILabel = {
         let albumLabel = UILabel()
-        albumLabel.text = "Лайкнутые"
+        albumLabel.text = "Мне нравится"
         albumLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        albumLabel.textColor = Constants.UI.yandexColor
         albumLabel.textAlignment = .center
         return albumLabel
     }()
@@ -29,6 +30,8 @@ class LikedAlbumHeader: UITableViewHeaderFooterView {
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.spacing = 5
+        stackView.backgroundColor = .white
         return stackView
     }()
     
