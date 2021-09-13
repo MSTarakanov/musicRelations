@@ -27,6 +27,7 @@
 		099D8F7626EFA2010028D5C2 /* YandexApiCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946F08E26EAD2F200B7AB48 /* YandexApiCaller.swift */; };
 		099D8F7726EFA2040028D5C2 /* UsersWithUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946F08A26EACB1200B7AB48 /* UsersWithUserDefaults.swift */; };
 		099D8F7926EFA9700028D5C2 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D8F7826EFA9700028D5C2 /* PlaylistModel.swift */; };
+		09E7604C26F0058D009ECB6A /* LikedAlbumHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E7604B26F0058D009ECB6A /* LikedAlbumHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,6 +66,7 @@
 		098D76F726EF7D0800088D2A /* PlaylistResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistResponseModel.swift; sourceTree = "<group>"; };
 		098D76FC26EF9B5D00088D2A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		099D8F7826EFA9700028D5C2 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
+		09E7604B26F0058D009ECB6A /* LikedAlbumHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedAlbumHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,9 +127,8 @@
 		0946F01E26EA5DB900B7AB48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0946F04326EA7BD800B7AB48 /* UserTableViewCell.swift */,
-				098D76F326EF78BA00088D2A /* PlaylistTableViewCell.swift */,
-				098D76F426EF78BA00088D2A /* PlaylistTableViewCell.xib */,
+				09E7604D26F00AAE009ECB6A /* Cells */,
+				09E7604B26F0058D009ECB6A /* LikedAlbumHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,6 +193,16 @@
 				098D76E626EC0B3400088D2A /* UserDefaults */,
 			);
 			path = DataManager;
+			sourceTree = "<group>";
+		};
+		09E7604D26F00AAE009ECB6A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0946F04326EA7BD800B7AB48 /* UserTableViewCell.swift */,
+				098D76F326EF78BA00088D2A /* PlaylistTableViewCell.swift */,
+				098D76F426EF78BA00088D2A /* PlaylistTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +285,7 @@
 				099D8F7726EFA2040028D5C2 /* UsersWithUserDefaults.swift in Sources */,
 				098D76F526EF78BA00088D2A /* PlaylistTableViewCell.swift in Sources */,
 				0946F01026EA5C7E00B7AB48 /* MusicRelations.xcdatamodeld in Sources */,
+				09E7604C26F0058D009ECB6A /* LikedAlbumHeader.swift in Sources */,
 				098D76FD26EF9B5D00088D2A /* UserModel.swift in Sources */,
 				098D769E26EC096500088D2A /* Constants.swift in Sources */,
 				098D76F026EEAAF800088D2A /* UIExtensions.swift in Sources */,
