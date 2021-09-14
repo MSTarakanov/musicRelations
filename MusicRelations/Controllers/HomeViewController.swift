@@ -62,9 +62,9 @@ class HomeViewController: UIViewController {
     func addYandexIdButtonDidTap () {
         addYandexIdAlert { newUserId in
             if !newUserId.isEmpty {         // add error handler
-                YandexApiCaller.isUser(with: newUserId) { (isRightUserId, user) in
+                YandexApiCaller.getUser(with: newUserId) {  (user) in
                     DispatchQueue.main.async {
-                        if isRightUserId, let user = user {
+                        if let user = user, user.userId != nil {
                             if self.users.contains(where: { user in
                                 user.userId == newUserId
                             }) {

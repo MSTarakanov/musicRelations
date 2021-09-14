@@ -8,7 +8,7 @@
 import Foundation
 
 class YandexApiCaller {
-    class func isUser(with id: String, completion: @escaping (Bool, UserModel?) -> Void) {
+    class func getUser(with id: String, completion: @escaping (UserModel?) -> Void) {
         guard let url = URL(string: Constants.Network.usersUrl + id) else { return }
         let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
@@ -18,7 +18,7 @@ class YandexApiCaller {
                     do {
                         let user = try JSONDecoder().decode(UserResponseModel.self, from: data)
                         print(user)
-                        completion(true, UserModel(userResponseModel: user))
+                        completion(UserModel(userResponseModel: user))
                     } catch {
                         print(error)
                     }

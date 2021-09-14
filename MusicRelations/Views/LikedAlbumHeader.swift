@@ -13,16 +13,18 @@ class LikedAlbumHeader: UITableViewHeaderFooterView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         imageView.image = UIImage(named: "likedAlbum")
+        imageView.layer.borderWidth = 3
+        imageView.layer.borderColor = #colorLiteral(red: 0.7764705882, green: 0.7764705882, blue: 0.7843137255, alpha: 1)
         return imageView
     }()
     
     private let albumLabel: UILabel = {
         let albumLabel = UILabel()
-        albumLabel.text = "Мне нравится"
+        albumLabel.text = "Избранные"
+        albumLabel.textColor = .white
         albumLabel.font = .systemFont(ofSize: 20, weight: .semibold)
-        albumLabel.textColor = Constants.UI.yandexColor
         albumLabel.textAlignment = .center
         return albumLabel
     }()
@@ -31,7 +33,8 @@ class LikedAlbumHeader: UITableViewHeaderFooterView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 5
-        stackView.backgroundColor = .white
+        stackView.backgroundColor = Constants.UI.yandexColor
+        stackView.layer.cornerRadius = 10
         return stackView
     }()
     
@@ -40,6 +43,8 @@ class LikedAlbumHeader: UITableViewHeaderFooterView {
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(albumLabel)
         contentView.addSubview(stackView)
+        contentView.backgroundColor = .white
+        
     }
     
     required init?(coder: NSCoder) {
@@ -48,6 +53,14 @@ class LikedAlbumHeader: UITableViewHeaderFooterView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        stackView.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.height)
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+        stackView.widthAnchor.constraint(equalTo: stackView.heightAnchor, constant: 0).isActive = true
+        stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        albumLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
 }

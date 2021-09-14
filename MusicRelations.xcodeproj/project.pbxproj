@@ -28,6 +28,7 @@
 		099D8F7726EFA2040028D5C2 /* UsersWithUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946F08A26EACB1200B7AB48 /* UsersWithUserDefaults.swift */; };
 		099D8F7926EFA9700028D5C2 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D8F7826EFA9700028D5C2 /* PlaylistModel.swift */; };
 		09E7604C26F0058D009ECB6A /* LikedAlbumHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E7604B26F0058D009ECB6A /* LikedAlbumHeader.swift */; };
+		09E7604F26F0A17F009ECB6A /* test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E7604E26F0A17F009ECB6A /* test.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,6 +68,7 @@
 		098D76FC26EF9B5D00088D2A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		099D8F7826EFA9700028D5C2 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
 		09E7604B26F0058D009ECB6A /* LikedAlbumHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedAlbumHeader.swift; sourceTree = "<group>"; };
+		09E7604E26F0A17F009ECB6A /* test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = test.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				0946F01326EA5C7F00B7AB48 /* LaunchScreen.storyboard */,
 				0946F01626EA5C7F00B7AB48 /* Info.plist */,
 				0946F00E26EA5C7E00B7AB48 /* MusicRelations.xcdatamodeld */,
+				09E7604E26F0A17F009ECB6A /* test.storyboard */,
 			);
 			path = MusicRelations;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				0946F01526EA5C7F00B7AB48 /* LaunchScreen.storyboard in Resources */,
 				0946F01226EA5C7F00B7AB48 /* Assets.xcassets in Resources */,
 				0946F00D26EA5C7E00B7AB48 /* Main.storyboard in Resources */,
+				09E7604F26F0A17F009ECB6A /* test.storyboard in Resources */,
 				098D76F626EF78BA00088D2A /* PlaylistTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
