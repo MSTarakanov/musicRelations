@@ -8,7 +8,7 @@
 import UIKit
 import DataManagerKit
 
-class HomeViewController: UIViewController {
+class ChooseUserViewController: UIViewController {
     
     // MARK: Outlets -
     @IBOutlet weak var addYandexIdButton: UIButton!
@@ -25,11 +25,12 @@ class HomeViewController: UIViewController {
     }
     
     func changeView() {
-        print(users.count)
-        if users.count == 0 {
+        if users.isEmpty {
             self.usersTableView.isHidden = true
+            self.navigationController?.isNavigationBarHidden = true
         } else {
             self.usersTableView.isHidden = false
+            self.navigationController?.isNavigationBarHidden = false
         }
     }
     
@@ -54,7 +55,8 @@ class HomeViewController: UIViewController {
         usersTableView.dataSource = self
         usersTableView.tableFooterView = UIView()
         usersTableView.register(UserTableViewCell.self, forCellReuseIdentifier: "UserTableViewCell")
-        usersTableView.isHidden = users.count == 0 ? true : false
+        usersTableView.isHidden = users.isEmpty ? true : false
+        navigationController?.isNavigationBarHidden = users.isEmpty ? true : false
     }
     
     // MARK: Actions -
@@ -83,7 +85,7 @@ class HomeViewController: UIViewController {
 }
 
 // MARK: UITableView extension -
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+extension ChooseUserViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         users.count
@@ -114,7 +116,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: Alerts -
-extension HomeViewController {
+extension ChooseUserViewController {
     func addYandexIdAlert(completion: @escaping (String) -> Void) {
         let alertController = UIAlertController(title: "Почта: mstarakanov@yandex.ru", message: "ID: mstarakanov", preferredStyle: .alert)
         

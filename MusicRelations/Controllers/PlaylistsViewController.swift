@@ -17,21 +17,37 @@ class PlaylistsViewController: UIViewController {
     }
     
     // MARK: UI vars -
-    private var playlistsTableView: UITableView = {
+    private let playlistsTableView: UITableView = {
         let tableView = UITableView()
         tableView.showsVerticalScrollIndicator = false
+//        tableView.isHidden = true
+        tableView.alpha = 0
         return tableView
+    }()
+    
+    private let tableViewActivityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = Constants.UI.yandexColor
+        activityIndicator.startAnimating()
+        return activityIndicator
     }()
     
     // MARK: VC Lifycycle -
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        view.addSubview(tableViewActivityIndicator)
         if let userId = user?.userId, let username = user?.username {
             self.title = username
             YandexApiCaller.getPlaylists(by: userId) { playlistResponseModel in
                 DispatchQueue.main.async {
                     self.playlists = PlaylistModel.getPlaylists(from: playlistResponseModel)
+//                    self.tableViewActivityIndicator.stopAnimating()
+//                    self.playlistsTableView.isHidden = false
+                    UIView.animate(withDuration: 1) {
+                        self.playlistsTableView.alpha = 1
+                        self.tableViewActivityIndicator.alpha = 0
+                    }
                 }
             }
             setUpPlaylistsTableView()
@@ -42,6 +58,10 @@ class PlaylistsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        tableViewActivityIndicator.center = view.center
+//        tableViewActivityIndicator.startAnimating()
+
         playlistsTableView.translatesAutoresizingMaskIntoConstraints = false
         playlistsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         playlistsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
