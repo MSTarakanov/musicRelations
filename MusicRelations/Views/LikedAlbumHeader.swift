@@ -55,12 +55,12 @@ class LikedAlbumHeader: UITableViewHeaderFooterView {
         super.layoutSubviews()
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
-        stackView.widthAnchor.constraint(equalTo: stackView.heightAnchor, constant: 0).isActive = true
-        stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive           = true
+        stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive    = true
+        stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive                 = true
+        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1).isActive       = true
+        albumLabel.heightAnchor.constraint(equalToConstant: 20).isActive                                = true
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        albumLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
 }

@@ -17,11 +17,16 @@ class PlaylistsViewController: UIViewController {
     }
     
     // MARK: UI vars -
-    var playlistsTableView = UITableView()
+    private var playlistsTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.showsVerticalScrollIndicator = false
+        return tableView
+    }()
     
     // MARK: VC Lifycycle -
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         if let userId = user?.userId, let username = user?.username {
             self.title = username
             YandexApiCaller.getPlaylists(by: userId) { playlistResponseModel in
@@ -33,6 +38,16 @@ class PlaylistsViewController: UIViewController {
         } else {
             // messageErorr
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        playlistsTableView.translatesAutoresizingMaskIntoConstraints = false
+        playlistsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        playlistsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        playlistsTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        playlistsTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+
     }
     
     // MARK: SetUp functions -
@@ -73,5 +88,9 @@ extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 200
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
     }
 }
