@@ -44,12 +44,17 @@
                                 <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Klw-SU-5Im">
+                                <rect key="frame" x="40" y="40" width="20" height="20"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="agV-IR-AWa" firstAttribute="height" secondItem="h6D-z4-XVK" secondAttribute="height" id="6Co-Js-4fc"/>
                             <constraint firstItem="xd7-UK-Q9U" firstAttribute="centerY" secondItem="cYC-Zb-7ud" secondAttribute="centerY" id="8lV-n9-VXw"/>
                             <constraint firstAttribute="bottom" secondItem="ypC-VK-ohM" secondAttribute="bottom" constant="10" id="9bH-KZ-amD"/>
+                            <constraint firstItem="Klw-SU-5Im" firstAttribute="centerX" secondItem="ypC-VK-ohM" secondAttribute="centerX" id="Awc-Dl-QwI"/>
                             <constraint firstItem="xd7-UK-Q9U" firstAttribute="leading" secondItem="ypC-VK-ohM" secondAttribute="trailing" constant="8" symbolic="YES" id="BVc-F2-Ppk"/>
                             <constraint firstItem="ypC-VK-ohM" firstAttribute="top" secondItem="cYC-Zb-7ud" secondAttribute="top" constant="10" id="KaC-yi-JA4"/>
                             <constraint firstItem="h6D-z4-XVK" firstAttribute="top" secondItem="xd7-UK-Q9U" secondAttribute="bottom" id="X50-hs-l0T"/>
@@ -57,6 +62,7 @@
                             <constraint firstItem="h6D-z4-XVK" firstAttribute="leading" secondItem="ypC-VK-ohM" secondAttribute="trailing" constant="8" symbolic="YES" id="Zzf-IO-sZG"/>
                             <constraint firstAttribute="trailing" secondItem="xd7-UK-Q9U" secondAttribute="trailing" constant="5" id="eVx-pR-kpZ"/>
                             <constraint firstItem="agV-IR-AWa" firstAttribute="centerY" secondItem="h6D-z4-XVK" secondAttribute="centerY" id="iM5-f3-JPv"/>
+                            <constraint firstItem="Klw-SU-5Im" firstAttribute="centerY" secondItem="ypC-VK-ohM" secondAttribute="centerY" id="iMl-IM-vhf"/>
                             <constraint firstItem="ypC-VK-ohM" firstAttribute="leading" secondItem="cYC-Zb-7ud" secondAttribute="leading" constant="10" id="xUW-ug-VXb"/>
                         </constraints>
                     </view>
@@ -73,6 +79,7 @@
                 <outlet property="amountOfTracksLabel" destination="agV-IR-AWa" id="twM-Bi-HcA"/>
                 <outlet property="backView" destination="cYC-Zb-7ud" id="x4H-fa-lo2"/>
                 <outlet property="playlistImage" destination="ypC-VK-ohM" id="9ph-Q0-sYh"/>
+                <outlet property="playlistImageActiviryIndicator" destination="Klw-SU-5Im" id="fIh-sg-ktP"/>
                 <outlet property="playlistLabel" destination="xd7-UK-Q9U" id="Gvg-ct-kDc"/>
                 <outlet property="tracksTextLabel" destination="h6D-z4-XVK" id="0C6-3w-s7N"/>
             </connections>

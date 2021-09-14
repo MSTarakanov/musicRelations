@@ -101,7 +101,7 @@
 		0946F00426EA5C7E00B7AB48 /* MusicRelations */ = {
 			isa = PBXGroup;
 			children = (
-				096BEEC926EC06FE0029EEC1 /* Resources */,
+				09E7605026F14C59009ECB6A /* Utils */,
 				0946F01C26EA5D9F00B7AB48 /* Models */,
 				0946F01E26EA5DB900B7AB48 /* Views */,
 				0946F01F26EA5DC100B7AB48 /* Controllers */,
@@ -144,15 +144,6 @@
 				098D76F126EF747C00088D2A /* PlaylistsViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		096BEEC926EC06FE0029EEC1 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				0946F08C26EAD17600B7AB48 /* Constants.swift */,
-				098D76EF26EEAAF800088D2A /* UIExtensions.swift */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		098D76E626EC0B3400088D2A /* UserDefaults */ = {
@@ -206,6 +197,15 @@
 				098D76F426EF78BA00088D2A /* PlaylistTableViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		09E7605026F14C59009ECB6A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0946F08C26EAD17600B7AB48 /* Constants.swift */,
+				098D76EF26EEAAF800088D2A /* UIExtensions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

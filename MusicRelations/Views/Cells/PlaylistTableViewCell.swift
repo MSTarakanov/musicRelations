@@ -9,13 +9,14 @@ import UIKit
 
 class PlaylistTableViewCell: UITableViewCell {
 
+    static let id = "PlaylistTableViewCellID"
+    
     @IBOutlet weak var playlistImage: UIImageView!
     @IBOutlet weak var playlistLabel: UILabel!
     @IBOutlet weak var amountOfTracksLabel: UILabel!
     @IBOutlet weak var tracksTextLabel: UILabel!
     @IBOutlet weak var backView: UIView!
-    
-    static let id = "PlaylistTableViewCellID"
+    @IBOutlet weak var playlistImageActiviryIndicator: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,10 +24,21 @@ class PlaylistTableViewCell: UITableViewCell {
         backView.backgroundColor = Constants.UI.yandexColor
         backView.layer.cornerRadius = 10
         
-        playlistImage.image = UIImage(named: "likedAlbum")
+        //playlistImage.image = UIImage(named: "likedAlbum")
         playlistImage.contentMode = .scaleToFill
         playlistImage.layer.borderWidth = 2
         playlistImage.layer.borderColor = #colorLiteral(red: 0.7764705882, green: 0.7764705882, blue: 0.7843137255, alpha: 1)
+        
+        
+
+        
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

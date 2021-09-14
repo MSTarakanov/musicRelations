@@ -10,7 +10,7 @@ import UIKit
 class PlaylistsViewController: UIViewController {
     // MARK: Data -
     var user: UserModel?
-    var playlists = [PlaylistModel]() {
+    private var playlists = [PlaylistModel]() {
         didSet {
             self.playlistsTableView.reloadData()
         }
@@ -20,7 +20,6 @@ class PlaylistsViewController: UIViewController {
     private let playlistsTableView: UITableView = {
         let tableView = UITableView()
         tableView.showsVerticalScrollIndicator = false
-//        tableView.isHidden = true
         tableView.alpha = 0
         return tableView
     }()
@@ -42,8 +41,6 @@ class PlaylistsViewController: UIViewController {
             YandexApiCaller.getPlaylists(by: userId) { playlistResponseModel in
                 DispatchQueue.main.async {
                     self.playlists = PlaylistModel.getPlaylists(from: playlistResponseModel)
-//                    self.tableViewActivityIndicator.stopAnimating()
-//                    self.playlistsTableView.isHidden = false
                     UIView.animate(withDuration: 1) {
                         self.playlistsTableView.alpha = 1
                         self.tableViewActivityIndicator.alpha = 0
@@ -60,7 +57,6 @@ class PlaylistsViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         tableViewActivityIndicator.center = view.center
-//        tableViewActivityIndicator.startAnimating()
 
         playlistsTableView.translatesAutoresizingMaskIntoConstraints = false
         playlistsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
