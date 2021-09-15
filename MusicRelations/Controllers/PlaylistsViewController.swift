@@ -69,10 +69,9 @@ class PlaylistsViewController: UIViewController {
     // MARK: SetUp functions -
     private func setUpPlaylistsTableView() {
         playlistsTableView.frame = view.safeAreaLayoutGuide.layoutFrame
-        //add constraint 0 to all anchors
         playlistsTableView.delegate = self
         playlistsTableView.dataSource = self
-        playlistsTableView.register(UINib(nibName: "PlaylistTableViewCell", bundle: nil), forCellReuseIdentifier: PlaylistTableViewCell.id)
+        playlistsTableView.register(PlaylistTableViewCell.nib, forCellReuseIdentifier: PlaylistTableViewCell.id)
         playlistsTableView.register(LikedAlbumHeader.self, forHeaderFooterViewReuseIdentifier: LikedAlbumHeader.id)
         self.playlistsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         view.addSubview(playlistsTableView)

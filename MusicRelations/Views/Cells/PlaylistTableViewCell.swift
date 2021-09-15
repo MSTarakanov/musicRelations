@@ -11,6 +11,8 @@ class PlaylistTableViewCell: UITableViewCell {
 
     static let id = "PlaylistTableViewCellID"
     
+    static let nib = UINib(nibName: "PlaylistTableViewCell", bundle: nil)
+    
     @IBOutlet weak var playlistImage: UIImageView!
     @IBOutlet weak var playlistLabel: UILabel!
     @IBOutlet weak var amountOfTracksLabel: UILabel!
