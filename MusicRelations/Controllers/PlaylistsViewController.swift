@@ -9,6 +9,8 @@ import UIKit
 
 class PlaylistsViewController: UIViewController {
     // MARK: Data -
+    static var usersPlaylists = [UserModel:[PlaylistModel]]()
+    
     var user: UserModel?
     private var playlists = [PlaylistModel]() {
         didSet {
@@ -38,15 +40,23 @@ class PlaylistsViewController: UIViewController {
         view.addSubview(tableViewActivityIndicator)
         if let userId = user?.userId, let username = user?.username {
             self.title = username
-            YandexApiCaller.getPlaylists(by: userId) { playlistResponseModel in
-                DispatchQueue.main.async {
+            if let userUnwrapped = user, let playslistsFromCache = PlaylistsViewController.usersPlaylists[userUnwrapped] {
+                playlists = playslistsFromCache
+                playlistsTableView.alpha = 1
+            } else {
+                YandexApiCaller.getPlaylists(by: userId) { playlistResponseModel in
                     self.playlists = PlaylistModel.getPlaylists(from: playlistResponseModel)
-                    UIView.animate(withDuration: 1) {
-                        self.playlistsTableView.alpha = 1
-                        self.tableViewActivityIndicator.alpha = 0
+                    PlaylistsViewController.usersPlaylists[self.user!] = self.playlists
+                    DispatchQueue.main.async {
+                        
+                        UIView.animate(withDuration: 1) {
+                            self.playlistsTableView.alpha = 1
+                            self.tableViewActivityIndicator.alpha = 0
+                        }
                     }
                 }
             }
+            
             setUpPlaylistsTableView()
         } else {
             // messageErorr
