@@ -38,17 +38,16 @@ class PlaylistsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(tableViewActivityIndicator)
-        if let userId = user?.userId, let username = user?.username {
-            self.title = username
-            if let userUnwrapped = user, let playslistsFromCache = PlaylistsViewController.usersPlaylists[userUnwrapped] {
+        if let userUnwrapped = user {
+            self.title = userUnwrapped.username
+            if let playslistsFromCache = PlaylistsViewController.usersPlaylists[userUnwrapped] {
                 playlists = playslistsFromCache
                 playlistsTableView.alpha = 1
             } else {
-                YandexApiCaller.getPlaylists(by: userId) { playlistResponseModel in
+                YandexApiCaller.getPlaylists(by: userUnwrapped.userId!) { playlistResponseModel in
                     self.playlists = PlaylistModel.getPlaylists(from: playlistResponseModel)
-                    PlaylistsViewController.usersPlaylists[self.user!] = self.playlists
+                    PlaylistsViewController.usersPlaylists[userUnwrapped] = self.playlists
                     DispatchQueue.main.async {
-                        
                         UIView.animate(withDuration: 1) {
                             self.playlistsTableView.alpha = 1
                             self.tableViewActivityIndicator.alpha = 0
