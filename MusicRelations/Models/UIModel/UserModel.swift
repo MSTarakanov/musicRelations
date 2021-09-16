@@ -8,11 +8,12 @@
 import Foundation
 
 struct UserModel: Codable, Hashable {
-    var userId: String?
-    var username:String?
+    var userId: String
+    var username: String
     
-    init(userResponseModel: UserResponseModel) {
-        userId = userResponseModel.result?.login
-        username = userResponseModel.result?.name
+    init?(userResponseModel: UserResponseModel) {
+        guard let userId = userResponseModel.result?.login, let username = userResponseModel.result?.name else {return nil}
+        self.userId = userId
+        self.username = username
     }
 }

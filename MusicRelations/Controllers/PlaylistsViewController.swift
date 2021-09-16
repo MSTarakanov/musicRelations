@@ -14,7 +14,9 @@ class PlaylistsViewController: UIViewController {
     var user: UserModel?
     private var playlists = [PlaylistModel]() {
         didSet {
-            self.playlistsTableView.reloadData()
+            DispatchQueue.main.async {
+                self.playlistsTableView.reloadData()
+            }
         }
     }
     
@@ -44,7 +46,7 @@ class PlaylistsViewController: UIViewController {
                 playlists = playslistsFromCache
                 playlistsTableView.alpha = 1
             } else {
-                YandexApiCaller.getPlaylists(by: userUnwrapped.userId!) { playlistResponseModel in
+                YandexApiCaller.getPlaylists(by: userUnwrapped.userId) { playlistResponseModel in
                     self.playlists = PlaylistModel.getPlaylists(from: playlistResponseModel)
                     PlaylistsViewController.usersPlaylists[userUnwrapped] = self.playlists
                     DispatchQueue.main.async {
