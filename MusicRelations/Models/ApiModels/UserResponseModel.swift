@@ -10,7 +10,7 @@ import Foundation
 // MARK: - UserModel
 struct UserResponseModel: Codable {
     let invocationInfo: InvocationInfo?
-    let result: Result?
+    let result: UserResult?
 }
 
 // MARK: - InvocationInfo
@@ -25,7 +25,7 @@ struct InvocationInfo: Codable {
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct UserResult: Codable {
     let uid: Int?
     let login, name, displayName, fullName: String?
     let verified: Bool?

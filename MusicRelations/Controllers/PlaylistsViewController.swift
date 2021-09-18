@@ -25,6 +25,7 @@ class PlaylistsViewController: UIViewController {
         let tableView = UITableView()
         tableView.showsVerticalScrollIndicator = false
         tableView.alpha = 0
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         return tableView
     }()
     
@@ -32,7 +33,14 @@ class PlaylistsViewController: UIViewController {
         let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.color = Constants.UI.yandexColor
         activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
         return activityIndicator
+    }()
+    
+    private let refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = Constants.UI.yandexColor
+        return refreshControl
     }()
     
     // MARK: VC Lifycycle -
@@ -79,15 +87,24 @@ class PlaylistsViewController: UIViewController {
     
     // MARK: SetUp functions -
     private func setUpPlaylistsTableView() {
-        playlistsTableView.frame = view.safeAreaLayoutGuide.layoutFrame
+//        playlistsTableView.frame = view.safeAreaLayoutGuide.layoutFrame
         playlistsTableView.delegate = self
         playlistsTableView.dataSource = self
         playlistsTableView.register(PlaylistTableViewCell.nib, forCellReuseIdentifier: PlaylistTableViewCell.id)
         playlistsTableView.register(LikedAlbumHeader.self, forHeaderFooterViewReuseIdentifier: LikedAlbumHeader.id)
-        self.playlistsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        playlistsTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         view.addSubview(playlistsTableView)
     }
+    
+    // MARK: Actions -
+    @objc
+    func refreshTable() {
+        
+    }
 }
+
+
 
 // MARK: TableView extensions -
 

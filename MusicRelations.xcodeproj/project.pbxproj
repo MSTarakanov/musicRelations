@@ -29,6 +29,7 @@
 		099D8F7926EFA9700028D5C2 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D8F7826EFA9700028D5C2 /* PlaylistModel.swift */; };
 		09E7604C26F0058D009ECB6A /* LikedAlbumHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E7604B26F0058D009ECB6A /* LikedAlbumHeader.swift */; };
 		09E7604F26F0A17F009ECB6A /* test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E7604E26F0A17F009ECB6A /* test.storyboard */; };
+		09E7605326F6A7BE009ECB6A /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E7605226F6A7BE009ECB6A /* ImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +70,7 @@
 		099D8F7826EFA9700028D5C2 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
 		09E7604B26F0058D009ECB6A /* LikedAlbumHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedAlbumHeader.swift; sourceTree = "<group>"; };
 		09E7604E26F0A17F009ECB6A /* test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = test.storyboard; sourceTree = "<group>"; };
+		09E7605226F6A7BE009ECB6A /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 		099D8F7526EFA16A0028D5C2 /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
+				09E7605126F6A79F009ECB6A /* NetworkLoaders */,
 				098D76E726EC0B4000088D2A /* YandexApi */,
 				098D76E626EC0B3400088D2A /* UserDefaults */,
 			);
@@ -206,6 +209,14 @@
 				098D76EF26EEAAF800088D2A /* UIExtensions.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		09E7605126F6A79F009ECB6A /* NetworkLoaders */ = {
+			isa = PBXGroup;
+			children = (
+				09E7605226F6A7BE009ECB6A /* ImageLoader.swift */,
+			);
+			path = NetworkLoaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +306,7 @@
 				098D76F026EEAAF800088D2A /* UIExtensions.swift in Sources */,
 				0946F00626EA5C7E00B7AB48 /* AppDelegate.swift in Sources */,
 				0946F00826EA5C7E00B7AB48 /* SceneDelegate.swift in Sources */,
+				09E7605326F6A7BE009ECB6A /* ImageLoader.swift in Sources */,
 				098D769D26EC094700088D2A /* UserResponseModel.swift in Sources */,
 				098D76EE26EE542A00088D2A /* AfterLaunchViewController.swift in Sources */,
 				0946F04426EA7BD800B7AB48 /* UserTableViewCell.swift in Sources */,
