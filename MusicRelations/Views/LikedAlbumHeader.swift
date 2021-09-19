@@ -11,6 +11,7 @@ class LikedAlbumHeader: UITableViewHeaderFooterView {
 
     static var id = "LikedAlbumHeader"
     
+    // MARK: UIViews -
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
@@ -38,6 +39,7 @@ class LikedAlbumHeader: UITableViewHeaderFooterView {
         return stackView
     }()
     
+    // MARK: Initialisation -
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         stackView.addArrangedSubview(imageView)
@@ -51,6 +53,7 @@ class LikedAlbumHeader: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Lifecycle -
     override func layoutSubviews() {
         super.layoutSubviews()
         

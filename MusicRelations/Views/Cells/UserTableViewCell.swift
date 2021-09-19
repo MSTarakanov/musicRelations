@@ -22,8 +22,9 @@ class UserTableViewCell: UITableViewCell {
     func setUpCell(for user: UserModel) {
         self.textLabel?.text = user.username
         self.accessoryType = .disclosureIndicator
-        let backView = UIView()
-        backView.backgroundColor = Constants.UI.yandexColor
-        self.selectedBackgroundView = backView
+        // add selection backgroundView
+        let selectedBackView = UIView()
+        selectedBackView.backgroundColor = Constants.UI.yandexColor
+        self.selectedBackgroundView = selectedBackView
     }
 }
