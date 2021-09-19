@@ -30,8 +30,8 @@ class PlaylistModel {
     }
     
     func playlistSquareImageUrl(with size: Int) -> String? {
-        guard var playlistImageUrlWithoutSize = self.playlistImageUrl else { return nil }
+        guard var playlistImageUrlWithoutSize = self.playlistImageUrl, !playlistImageUrlWithoutSize.isEmpty else { return nil }
         playlistImageUrlWithoutSize.removeLast(2)
-        return "\(playlistImageUrlWithoutSize)\(size)x\(size)"
+        return "https://\(playlistImageUrlWithoutSize)\(size)x\(size)"
     }
 }

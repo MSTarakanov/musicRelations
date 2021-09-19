@@ -180,5 +180,133 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FF8991E2-69CE-4A06-BA81-01FC7F43EA28"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicRelations/Views/Cells/PlaylistTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "configureCell(by:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FF8991E2-69CE-4A06-BA81-01FC7F43EA28 - 4819761bf2ac096e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MusicRelations.PlaylistTableViewCell.configureCell(by: MusicRelations.PlaylistModel) -&gt; ()"
+                  moduleName = "MusicRelations"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mstarakanov/Projects/iOS/MusicRelations/MusicRelations/Views/Cells/PlaylistTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "1980">
+               </Location>
+               <Location
+                  uuid = "FF8991E2-69CE-4A06-BA81-01FC7F43EA28 - b4a789b14ab7195a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.UIImage, Swift.Error&gt;) -&gt; () in MusicRelations.PlaylistTableViewCell.configureCell(by: MusicRelations.PlaylistModel) -&gt; ()"
+                  moduleName = "MusicRelations"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mstarakanov/Projects/iOS/MusicRelations/MusicRelations/Views/Cells/PlaylistTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "352">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "835ABC52-2F91-4947-BD50-1363EF8014F0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicRelations/DataManager/NetworkLoaders/ImageLoader.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "loadImage(_:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E65A728F-41AB-454C-96DC-574DE4A5E5E9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicRelations/DataManager/NetworkLoaders/ImageLoader.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "loadImage(_:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E65A728F-41AB-454C-96DC-574DE4A5E5E9 - 4b37940381130a99"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MusicRelations.ImageLoader.loadImage(_: Foundation.URL, completion: (Swift.Result&lt;__C.UIImage, Swift.Error&gt;) -&gt; ()) -&gt; Swift.Optional&lt;Foundation.UUID&gt;"
+                  moduleName = "MusicRelations"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mstarakanov/Projects/iOS/MusicRelations/MusicRelations/DataManager/NetworkLoaders/ImageLoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "800">
+               </Location>
+               <Location
+                  uuid = "E65A728F-41AB-454C-96DC-574DE4A5E5E9 - 607ab896cdedc78b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MusicRelations.ImageLoader.loadImage(_: Foundation.URL, completion: (Swift.Result&lt;__C.UIImage, Swift.Error&gt;) -&gt; ()) -&gt; Swift.Optional&lt;Foundation.UUID&gt;"
+                  moduleName = "MusicRelations"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mstarakanov/Projects/iOS/MusicRelations/MusicRelations/DataManager/NetworkLoaders/ImageLoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "216">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "441A084F-B08F-432E-BA55-A8795CB9B904"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicRelations/DataManager/NetworkLoaders/ImageLoader.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "loadImage(_:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

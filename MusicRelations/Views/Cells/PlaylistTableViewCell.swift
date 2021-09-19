@@ -13,12 +13,15 @@ class PlaylistTableViewCell: UITableViewCell {
     
     static let nib = UINib(nibName: "PlaylistTableViewCell", bundle: nil)
     
+    private let loader = ImageLoader()
+    
+    var onReuse: () -> Void = {}
+    
     @IBOutlet weak var playlistImage: UIImageView!
     @IBOutlet weak var playlistLabel: UILabel!
     @IBOutlet weak var amountOfTracksLabel: UILabel!
     @IBOutlet weak var tracksTextLabel: UILabel!
     @IBOutlet weak var backView: UIView!
-    @IBOutlet weak var playlistImageActiviryIndicator: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,6 +52,12 @@ class PlaylistTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        onReuse()
+        playlistImage.image = UIImage(named: "squarePlaceholder")
+    }
+    
     func configureCell(by playlistModel: PlaylistModel) {
         playlistLabel.text = playlistModel.playlistName
         if let amount = playlistModel.trackAmount {
@@ -57,7 +66,22 @@ class PlaylistTableViewCell: UITableViewCell {
             amountOfTracksLabel.isHidden = true
             tracksTextLabel.isHidden = true
         }
+        if let imageUrl = playlistModel.playlistSquareImageUrl(with: 100), let url = URL(string: imageUrl) {
+            let token = loader.loadImage(url) { result in
+                do {
+                    let image = try result.get()
+                    DispatchQueue.main.async {
+                        self.playlistImage.image = image
+                    }
+                } catch {
+                    print(error)
+                }
+                self.onReuse = {
+                    if let token = token {
+                        self.loader.cancelLoad(token)
+                    }
+                }
+            }
+        }
     }
-    
-    
 }
