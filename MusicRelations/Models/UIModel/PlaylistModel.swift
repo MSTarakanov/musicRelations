@@ -8,29 +8,39 @@
 import UIKit
 
 class PlaylistModel {
-    var playlistName: String?
-    var trackAmount: Int?
-    var playlistImageUrl: String?
+    var playlistName: String
+    var trackAmount: Int
+    var playlistImageUrl: String
     
-    init(resultPlaylist: PlaylistResult) {
-        playlistName = resultPlaylist.title
-        playlistImageUrl = resultPlaylist.ogImage
-        trackAmount = resultPlaylist.trackCount
+    init?(resultPlaylist: PlaylistResult) {
+        guard let playlistName = resultPlaylist.title,
+              let playlistImageUrl = resultPlaylist.ogImage,
+              let trackAmount = resultPlaylist.trackCount
+        else {
+            return nil
+        }
+        self.playlistName = playlistName
+        self.playlistImageUrl = playlistImageUrl
+        self.trackAmount = trackAmount
     }
     
     class func getPlaylists(from responseModel: PlaylistResponseModel) -> [PlaylistModel] {
         var playlists = [PlaylistModel]()
         if let result = responseModel.result {
             for playlist in result {
-                let playlistToAdd = PlaylistModel(resultPlaylist: playlist)
-                playlists.append(playlistToAdd)
+                if let playlistToAdd = PlaylistModel(resultPlaylist: playlist) {
+                    playlists.append(playlistToAdd)
+                }
             }
         }
         return playlists
     }
     
     func playlistSquareImageUrl(with size: Int) -> String? {
-        guard var playlistImageUrlWithoutSize = self.playlistImageUrl, !playlistImageUrlWithoutSize.isEmpty else { return nil }
+        if playlistImageUrl.isEmpty {
+            return nil
+        }
+        var playlistImageUrlWithoutSize = playlistImageUrl
         playlistImageUrlWithoutSize.removeLast(2)
         return "https://\(playlistImageUrlWithoutSize)\(size)x\(size)"
     }

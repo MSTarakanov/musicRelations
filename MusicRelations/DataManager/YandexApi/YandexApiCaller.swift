@@ -18,7 +18,9 @@ class YandexApiCaller {
                     do {
                         let user = try JSONDecoder().decode(UserResponseModel.self, from: data)
                         print(user)
-                        completion(UserModel(userResponseModel: user))
+                        if let userResult = user.result {
+                            completion(UserModel(userResponseResult: userResult))
+                        }
                     } catch {
                         print(error)
                     }

@@ -60,12 +60,7 @@ class PlaylistTableViewCell: UITableViewCell {
     
     func configureCell(by playlistModel: PlaylistModel) {
         playlistLabel.text = playlistModel.playlistName
-        if let amount = playlistModel.trackAmount {
-            amountOfTracksLabel.text = "\(amount)"
-        } else {
-            amountOfTracksLabel.isHidden = true
-            tracksTextLabel.isHidden = true
-        }
+        amountOfTracksLabel.text = "\(playlistModel.trackAmount)"
         if let imageUrl = playlistModel.playlistSquareImageUrl(with: 100), let url = URL(string: imageUrl) {
             let token = loader.loadImage(url) { result in
                 do {

@@ -11,8 +11,12 @@ struct UserModel: Codable, Hashable {
     var userId: String
     var username: String
     
-    init?(userResponseModel: UserResponseModel) {
-        guard let userId = userResponseModel.result?.login, let username = userResponseModel.result?.name else {return nil}
+    init?(userResponseResult: UserResult) {
+        guard let userId = userResponseResult.login,
+              let username = userResponseResult.name
+        else {
+            return nil
+        }
         self.userId = userId
         self.username = username
     }
