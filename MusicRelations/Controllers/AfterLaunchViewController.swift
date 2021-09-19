@@ -7,6 +7,7 @@
 
 import UIKit
 
+// class is created to animate logo before showing homescreen
 class AfterLaunchViewController: UIViewController {
 
     @IBOutlet weak var heightLogoConstraint: NSLayoutConstraint!

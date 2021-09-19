@@ -15,7 +15,7 @@ class ChooseUserViewController: UIViewController {
     
     @IBOutlet weak var usersTableView: UITableView!
     
-    // MARK: data -
+    // MARK: Data -
 //    private var usersPlaylistsCache: [UserModel:PlaylistModel]?
     
     private var users: [UserModel] = PlistHandler.getUsers() {
@@ -26,49 +26,50 @@ class ChooseUserViewController: UIViewController {
         }
     }
     
-    func changeView() {
+    private func changeView() {
         if users.isEmpty {
-            self.usersTableView.isHidden = true
-            self.navigationController?.isNavigationBarHidden = true
+            usersTableView.isHidden = true
+            navigationController?.isNavigationBarHidden = true
         } else {
-            self.usersTableView.isHidden = false
-            self.navigationController?.isNavigationBarHidden = false
+            usersTableView.isHidden = false
+            navigationController?.isNavigationBarHidden = false
         }
     }
     
-    // MARK: VC Lifycycle -
+    // MARK: VC Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
     
         view.backgroundColor = .white
-        self.title = "Выберите пользователя"
+        title = "Выберите пользователя"
+        
         setUpUsersTableView()
         setUpAddYandexButton()
     }
     
     
     // MARK: setUp functions -
-    func setUpAddYandexButton() {
+    private func setUpAddYandexButton() {
         addYandexIdButton.addTarget(self, action: #selector(addYandexIdButtonDidTap), for: .touchUpInside)
     }
     
-    func setUpUsersTableView() {
+    private func setUpUsersTableView() {
         usersTableView.delegate = self
         usersTableView.dataSource = self
         usersTableView.tableFooterView = UIView()
-        usersTableView.register(UserTableViewCell.self, forCellReuseIdentifier: "UserTableViewCell")
+        usersTableView.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.id)
         usersTableView.isHidden = users.isEmpty ? true : false
         navigationController?.isNavigationBarHidden = users.isEmpty ? true : false
     }
     
     // MARK: Actions -
     @objc
-    func addYandexIdButtonDidTap () {
+    private func addYandexIdButtonDidTap () {
         addYandexIdAlert { newUserId in
-            if !newUserId.isEmpty {         // add error handler
+            if !newUserId.isEmpty {
                 YandexApiCaller.getUser(with: newUserId) {  (user) in
                     DispatchQueue.main.async {
-                        if let user = user, user.userId != nil {
+                        if let user = user {
                             if self.users.contains(where: { user in
                                 user.userId == newUserId
                             }) {
@@ -94,7 +95,8 @@ extension ChooseUserViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let userCell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
+        let userCell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.id, for: indexPath) as! UserTableViewCell
+        
         userCell.setUpCell(for: users[indexPath.row])
         
         return userCell
@@ -102,6 +104,7 @@ extension ChooseUserViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
         let vc = PlaylistsViewController()
         vc.user = users[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
@@ -127,7 +130,7 @@ extension ChooseUserViewController {
             guard let text = textFromTextField?.text else {return}
             completion(text)
         })
-        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let actionCancel = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
         
         alertController.addTextField { textField in
             textField.placeholder = "Введите yandex ID"

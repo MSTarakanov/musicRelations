@@ -9,9 +9,10 @@ import UIKit
 
 class PlaylistsViewController: UIViewController {
     // MARK: Data -
-    static var usersPlaylists = [UserModel:[PlaylistModel]]()
+    static var usersPlaylistsLoaded = [UserModel:[PlaylistModel]]()
     
     var user: UserModel?
+    
     private var playlists = [PlaylistModel]() {
         didSet {
             DispatchQueue.main.async {
@@ -20,7 +21,7 @@ class PlaylistsViewController: UIViewController {
         }
     }
     
-    // MARK: UI vars -
+    // MARK: UI -
     private let playlistsTableView: UITableView = {
         let tableView = UITableView()
         tableView.showsVerticalScrollIndicator = false
@@ -46,26 +47,27 @@ class PlaylistsViewController: UIViewController {
     // MARK: VC Lifycycle -
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
         view.addSubview(tableViewActivityIndicator)
+        
         if let userUnwrapped = user {
-            self.title = userUnwrapped.username
-            if let playslistsFromCache = PlaylistsViewController.usersPlaylists[userUnwrapped] {
+            title = userUnwrapped.username
+            if let playslistsFromCache = PlaylistsViewController.usersPlaylistsLoaded[userUnwrapped] {
                 playlists = playslistsFromCache
                 playlistsTableView.alpha = 1
             } else {
                 YandexApiCaller.getPlaylists(by: userUnwrapped.userId) { playlistResponseModel in
                     self.playlists = PlaylistModel.getPlaylists(from: playlistResponseModel)
-                    PlaylistsViewController.usersPlaylists[userUnwrapped] = self.playlists
+                    PlaylistsViewController.usersPlaylistsLoaded[userUnwrapped] = self.playlists
                     DispatchQueue.main.async {
                         UIView.animate(withDuration: 1) {
                             self.playlistsTableView.alpha = 1
-                            self.tableViewActivityIndicator.alpha = 0
+                            self.tableViewActivityIndicator.stopAnimating()
                         }
                     }
                 }
             }
-            
             setUpPlaylistsTableView()
         } else {
             // messageErorr
@@ -87,19 +89,20 @@ class PlaylistsViewController: UIViewController {
     
     // MARK: SetUp functions -
     private func setUpPlaylistsTableView() {
-//        playlistsTableView.frame = view.safeAreaLayoutGuide.layoutFrame
         playlistsTableView.delegate = self
         playlistsTableView.dataSource = self
         playlistsTableView.register(PlaylistTableViewCell.nib, forCellReuseIdentifier: PlaylistTableViewCell.id)
         playlistsTableView.register(LikedAlbumHeader.self, forHeaderFooterViewReuseIdentifier: LikedAlbumHeader.id)
+        
         playlistsTableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        
         view.addSubview(playlistsTableView)
     }
     
     // MARK: Actions -
     @objc
-    func refreshTable() {
+    private func refreshTable() {
         
     }
 }
