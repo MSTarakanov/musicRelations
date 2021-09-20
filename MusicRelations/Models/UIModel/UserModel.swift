@@ -8,8 +8,8 @@
 import Foundation
 
 struct UserModel: Codable, Hashable {
-    var userId: String
-    var username: String
+    let userId: String
+    let username: String
     
     init?(userResponseResult: UserResult) {
         guard let userId = userResponseResult.login,

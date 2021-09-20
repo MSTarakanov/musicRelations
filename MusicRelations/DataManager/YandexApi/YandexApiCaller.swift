@@ -30,7 +30,7 @@ class YandexApiCaller {
         dataTask.resume()
     }
     
-    class func getPlaylists(by userId: String, completion: @escaping (PlaylistResponseModel) -> Void) {
+    class func getPlaylists(by userId: String, completion: @escaping (PlaylistsResponseModel) -> Void) {
         guard let url = URL(string: Constants.Network.usersUrl + userId + "/playlists/list") else { return }
         let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
@@ -39,7 +39,7 @@ class YandexApiCaller {
             }
             if let data = data {
                 do {
-                    let playlistResponse = try JSONDecoder().decode(PlaylistResponseModel.self, from: data)
+                    let playlistResponse = try JSONDecoder().decode(PlaylistsResponseModel.self, from: data)
                     print(playlistResponse)
                     completion(playlistResponse)
                 } catch {
@@ -48,5 +48,9 @@ class YandexApiCaller {
             }
         }
         dataTask.resume()
+    }
+    
+    class func getTracks(from playlist: PlaylistModel, completion: (TracksResponseModel) -> Void) {
+        
     }
 }

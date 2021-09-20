@@ -14,7 +14,7 @@
 import Foundation
 
 // MARK: - PlaylistResponseModel
-struct PlaylistResponseModel: Codable {
+struct PlaylistsResponseModel: Codable {
     let invocationInfo: InvocationInfo?
     let result: [PlaylistResult]?
 }

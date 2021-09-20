@@ -7,24 +7,27 @@
 
 import UIKit
 
-class PlaylistModel {
-    var playlistName: String
-    var trackAmount: Int
-    var playlistImageUrl: String
+struct PlaylistModel {
+    let playlistName: String
+    let trackAmount: Int
+    let playlistImageUrl: String
+    let kind: Int
     
     init?(resultPlaylist: PlaylistResult) {
         guard let playlistName = resultPlaylist.title,
               let playlistImageUrl = resultPlaylist.ogImage,
-              let trackAmount = resultPlaylist.trackCount
+              let trackAmount = resultPlaylist.trackCount,
+              let kind = resultPlaylist.kind
         else {
             return nil
         }
         self.playlistName = playlistName
         self.playlistImageUrl = playlistImageUrl
         self.trackAmount = trackAmount
+        self.kind = kind
     }
     
-    class func getPlaylists(from responseModel: PlaylistResponseModel) -> [PlaylistModel] {
+    static func getPlaylists(from responseModel: PlaylistsResponseModel) -> [PlaylistModel] {
         var playlists = [PlaylistModel]()
         if let result = responseModel.result {
             for playlist in result {
