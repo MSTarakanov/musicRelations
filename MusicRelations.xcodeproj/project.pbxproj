@@ -165,14 +165,6 @@
 			path = UserDefaults;
 			sourceTree = "<group>";
 		};
-		098D76E726EC0B4000088D2A /* YandexApi */ = {
-			isa = PBXGroup;
-			children = (
-				0946F08E26EAD2F200B7AB48 /* YandexApiCaller.swift */,
-			);
-			path = YandexApi;
-			sourceTree = "<group>";
-		};
 		098D76FA26EF9B2B00088D2A /* ApiModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				09E7605126F6A79F009ECB6A /* NetworkLoaders */,
-				098D76E726EC0B4000088D2A /* YandexApi */,
 				098D76E626EC0B3400088D2A /* UserDefaults */,
 			);
 			path = DataManager;
@@ -226,6 +217,7 @@
 		09E7605126F6A79F009ECB6A /* NetworkLoaders */ = {
 			isa = PBXGroup;
 			children = (
+				0946F08E26EAD2F200B7AB48 /* YandexApiCaller.swift */,
 				09E7605226F6A7BE009ECB6A /* ImageLoader.swift */,
 			);
 			path = NetworkLoaders;

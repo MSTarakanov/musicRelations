@@ -9,12 +9,24 @@ import UIKit
 
 class TracksViewController: UIViewController {
 
+    static var playlistsTracksLoaded = [PlaylistModel: [TrackModel]]()
+
+    var playlist: PlaylistModel?
     //private let tracks = [TrackModel]()
     private let tracks = Array(repeating: "track", count: 5)
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.color = Constants.UI.yandexColor
+        indicator.hidesWhenStopped = true
+        indicator.startAnimating()
+        return indicator
+    }()
     
     private let tracksCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .white
+        collectionView.alpha = 0
         return collectionView
     }()
     
@@ -25,13 +37,19 @@ class TracksViewController: UIViewController {
         tracksCollectionView.delegate = self
         tracksCollectionView.dataSource = self
         tracksCollectionView.register(TrackCollectionViewCell.self, forCellWithReuseIdentifier: TrackCollectionViewCell.id)
+        view.addSubview(activityIndicator)
         view.addSubview(tracksCollectionView)
+        if let playlist = playlist {
+            YandexApiCaller.getTracks(from: playlist) { tr in
+                print(tr)
+            }
+        }
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-//        tracksCollectionView.frame = view.bounds
         tracksCollectionView.translatesAutoresizingMaskIntoConstraints = false
         tracksCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tracksCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true

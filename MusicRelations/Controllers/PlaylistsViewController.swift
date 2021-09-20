@@ -126,6 +126,7 @@ extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let tracksVC = TracksViewController()
+        tracksVC.playlist = playlists[indexPath.row]
         navigationController?.pushViewController(tracksVC, animated: true)
     }
     

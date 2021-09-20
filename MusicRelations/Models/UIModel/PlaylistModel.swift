@@ -7,14 +7,16 @@
 
 import UIKit
 
-struct PlaylistModel {
+struct PlaylistModel: Hashable {
     let playlistName: String
+    let ownerLogin: String
     let trackAmount: Int
     let playlistImageUrl: String
     let kind: Int
     
     init?(resultPlaylist: PlaylistResult) {
         guard let playlistName = resultPlaylist.title,
+              let ownerLogin = resultPlaylist.owner?.login,
               let playlistImageUrl = resultPlaylist.ogImage,
               let trackAmount = resultPlaylist.trackCount,
               let kind = resultPlaylist.kind
@@ -22,6 +24,7 @@ struct PlaylistModel {
             return nil
         }
         self.playlistName = playlistName
+        self.ownerLogin = ownerLogin
         self.playlistImageUrl = playlistImageUrl
         self.trackAmount = trackAmount
         self.kind = kind
