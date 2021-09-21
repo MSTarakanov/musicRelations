@@ -12,8 +12,14 @@ class TracksViewController: UIViewController {
     static var playlistsTracksLoaded = [PlaylistModel: [TrackModel]]()
 
     var playlist: PlaylistModel?
-    //private let tracks = [TrackModel]()
-    private let tracks = Array(repeating: "track", count: 5)
+    private var tracks = [TrackModel]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tracksCollectionView.reloadData()
+            }
+        }
+    }
+//    private let tracks = Array(repeating: "track", count: 5)
     
     private let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
@@ -27,6 +33,7 @@ class TracksViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .white
         collectionView.alpha = 0
+//        collectionView.selectionFollowsFocus = false
         return collectionView
     }()
     
@@ -40,15 +47,24 @@ class TracksViewController: UIViewController {
         view.addSubview(activityIndicator)
         view.addSubview(tracksCollectionView)
         if let playlist = playlist {
-            YandexApiCaller.getTracks(from: playlist) { tr in
-                print(tr)
+            TrackModel.getTracks(from: playlist) { tracks in
+                self.tracks = tracks
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 1) {
+                        self.activityIndicator.stopAnimating()
+                        self.tracksCollectionView.alpha = 1
+                    }
+                }
             }
-        }
-        
+        }        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         tracksCollectionView.translatesAutoresizingMaskIntoConstraints = false
         tracksCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -78,5 +94,8 @@ extension TracksViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return CGSize(width: view.frame.width - 20, height: 100)
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        print(indexPath)
+    }
 }

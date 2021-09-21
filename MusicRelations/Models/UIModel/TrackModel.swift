@@ -17,4 +17,13 @@ struct TrackModel {
         }
         self.trackName = trackName
     }
+    
+    static func getTracks(from playlistModel: PlaylistModel, completion: @escaping ([TrackModel]) -> Void) {
+        YandexApiCaller.getTracks(from: playlistModel) { trackResponseModel in
+            let tracks = trackResponseModel.result?.tracks?.compactMap({TrackModel(trackElement: $0)})
+            if let tracksFromApi = tracks {
+                completion(tracksFromApi)
+            }
+        }
+    }
 }

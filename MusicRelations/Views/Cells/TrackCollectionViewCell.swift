@@ -11,15 +11,6 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     static let id = "TrackCollectionViewCellID"
     
-    private let buttonView: UIButton = {
-        let btn = UIButton(type: .system)
-        btn.backgroundColor = .white
-        btn.layer.borderWidth = 2
-        btn.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
-        btn.layer.cornerRadius = 10
-        return btn
-    }()
-    
     private let trackNameLabel: UILabel = {
         let label = UILabel()
         return label
@@ -27,8 +18,13 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(buttonView)
-        buttonView.addSubview(trackNameLabel)
+        let backView = UIView(frame: .zero)
+        backView.layer.borderWidth = 3
+        backView.layer.borderColor = Constants.UI.yandexColor.cgColor
+        backView.layer.cornerRadius = 20
+        backView.backgroundColor = Constants.UI.yandexColor
+        selectedBackgroundView = backView
+        contentView.addSubview(trackNameLabel)
     }
     
     required init?(coder: NSCoder) {
@@ -39,24 +35,22 @@ class TrackCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         
         trackNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        buttonView.translatesAutoresizingMaskIntoConstraints = false
         
-        buttonView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-        buttonView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 10).isActive = true
-        buttonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
-        buttonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
-
-        trackNameLabel.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor).isActive = true
-        trackNameLabel.leadingAnchor.constraint(equalTo: buttonView.leadingAnchor).isActive = true
-        
+        trackNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        trackNameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
+        contentView.layer.borderWidth = 3
+        contentView.layer.borderColor = Constants.UI.yandexColor.cgColor
+        contentView.layer.cornerRadius = 20
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
     }
     
-    func configureCell(track: String) {
-        trackNameLabel.text = track
+    
+    
+    func configureCell(track: TrackModel) {
+        trackNameLabel.text = track.trackName
     }
     
     
