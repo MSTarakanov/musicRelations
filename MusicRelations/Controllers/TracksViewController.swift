@@ -19,7 +19,6 @@ class TracksViewController: UIViewController {
             }
         }
     }
-//    private let tracks = Array(repeating: "track", count: 5)
     
     private let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
@@ -33,7 +32,6 @@ class TracksViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .white
         collectionView.alpha = 0
-//        collectionView.selectionFollowsFocus = false
         return collectionView
     }()
     
@@ -47,12 +45,18 @@ class TracksViewController: UIViewController {
         view.addSubview(activityIndicator)
         view.addSubview(tracksCollectionView)
         if let playlist = playlist {
-            TrackModel.getTracks(from: playlist) { tracks in
+            if let tracks = TracksViewController.playlistsTracksLoaded[playlist] {
                 self.tracks = tracks
-                DispatchQueue.main.async {
-                    UIView.animate(withDuration: 1) {
-                        self.activityIndicator.stopAnimating()
-                        self.tracksCollectionView.alpha = 1
+                self.tracksCollectionView.alpha = 1
+            } else {
+                TrackModel.getTracks(from: playlist) { tracks in
+                    TracksViewController.playlistsTracksLoaded[playlist] = tracks
+                    self.tracks = tracks
+                    DispatchQueue.main.async {
+                        UIView.animate(withDuration: 1) {
+                            self.tracksCollectionView.alpha = 1
+                            self.activityIndicator.stopAnimating()
+                        }
                     }
                 }
             }
@@ -85,7 +89,6 @@ extension TracksViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = tracksCollectionView.dequeueReusableCell(withReuseIdentifier: TrackCollectionViewCell.id, for: indexPath) as! TrackCollectionViewCell
-        print(indexPath)
         cell.configureCell(track: tracks[indexPath.row])
         return cell
     }

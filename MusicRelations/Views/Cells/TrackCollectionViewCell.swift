@@ -11,6 +11,8 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     static let id = "TrackCollectionViewCellID"
     
+    private let loader = ImageLoader()
+    private var onReuse: () -> () = {}
     
     private let trackNameLabel: UILabel = {
         let label = UILabel()
@@ -19,6 +21,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     private let artistsLabel: UILabel = {
         let label = UILabel()
+        label.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         return label
     }()
     
@@ -85,6 +88,23 @@ class TrackCollectionViewCell: UICollectionViewCell {
     func configureCell(track: TrackModel) {
         trackNameLabel.text = track.trackName
         artistsLabel.text = track.artists.reduce("", {$0 == "" ? $0 + $1 : $0 + ", " + $1})
+        if let url = URL(string: track.imageUrlWithSize100) {
+            let token = loader.loadImage(url) { result in
+                do {
+                    let image = try result.get()
+                    DispatchQueue.main.async {
+                        self.imageView.image = image
+                    }
+                } catch {
+                    print(error)
+                }
+                self.onReuse = {
+                    if let token = token {
+                        self.loader.cancelLoad(token)
+                    }
+                }
+            }
+        }
     }
     
     

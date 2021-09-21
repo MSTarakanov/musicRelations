@@ -14,7 +14,7 @@ struct TrackModel {
     
     init?(trackElement: TrackElement) {
         guard let trackName = trackElement.track?.title,
-              let clearImageUrl = trackElement.track?.ogImage, !clearImageUrl.isEmpty,
+              let clearImageUrl = trackElement.track?.ogImage,
               let artists = trackElement.track?.artists
         else {
             return nil
