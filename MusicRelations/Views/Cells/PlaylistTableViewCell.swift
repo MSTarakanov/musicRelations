@@ -29,9 +29,9 @@ class PlaylistTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        backView.backgroundColor = Constants.UI.yandexColor
-        backView.layer.cornerRadius = 10
-    
+//        backView.backgroundColor = Constants.UI.yandexColor
+//        backView.layer.cornerRadius = 10
+        DesignUtils.styleViewCell(view: backView)
         playlistImage.contentMode = .scaleToFill
         playlistImage.layer.borderWidth = 2
         playlistImage.layer.borderColor = #colorLiteral(red: 0.7764705882, green: 0.7764705882, blue: 0.7843137255, alpha: 1)

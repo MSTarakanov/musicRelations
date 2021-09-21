@@ -11,10 +11,31 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     static let id = "TrackCollectionViewCellID"
     
+    
     private let trackNameLabel: UILabel = {
         let label = UILabel()
         return label
     }()
+    
+    private let artistsLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    private let labelsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        return stackView
+    }()
+    
+    private let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "squarePlaceholder")
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = #colorLiteral(red: 0.7764705882, green: 0.7764705882, blue: 0.7843137255, alpha: 1)
+        return imageView
+    }()
+    
     
     private let selectedBackView: UIView = {
         let backView = UIView(frame: .zero)
@@ -27,7 +48,11 @@ class TrackCollectionViewCell: UICollectionViewCell {
         DesignUtils.styleViewCell(view: selectedBackView)
         DesignUtils.styleViewCell(view: contentView)
         selectedBackgroundView = selectedBackView
-        contentView.addSubview(trackNameLabel)
+        DesignUtils.styleViewCell(view: contentView)
+        contentView.addSubview(imageView)
+        contentView.addSubview(labelsStackView)
+        labelsStackView.addArrangedSubview(trackNameLabel)
+        labelsStackView.addArrangedSubview(artistsLabel)
     }
     
     required init?(coder: NSCoder) {
@@ -37,13 +62,17 @@ class TrackCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        trackNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
+        imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
         
-        trackNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        trackNameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
-        contentView.layer.borderWidth = 3
-        contentView.layer.borderColor = Constants.UI.yandexColor.cgColor
-        contentView.layer.cornerRadius = 20
+        labelsStackView.translatesAutoresizingMaskIntoConstraints = false
+        labelsStackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10).isActive = true
+        labelsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
+        labelsStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        
         
     }
     
@@ -55,6 +84,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     func configureCell(track: TrackModel) {
         trackNameLabel.text = track.trackName
+        artistsLabel.text = track.artists.reduce("", {$0 == "" ? $0 + $1 : $0 + ", " + $1})
     }
     
     

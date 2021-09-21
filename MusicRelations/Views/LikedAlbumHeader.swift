@@ -35,7 +35,8 @@ class LikedAlbumHeader: UITableViewHeaderFooterView {
         stackView.axis = .vertical
         stackView.spacing = 5
         stackView.backgroundColor = Constants.UI.yandexColor
-        stackView.layer.cornerRadius = 10
+//        stackView.layer.cornerRadius = 10
+        DesignUtils.styleViewCell(view: stackView)
         return stackView
     }()
     
