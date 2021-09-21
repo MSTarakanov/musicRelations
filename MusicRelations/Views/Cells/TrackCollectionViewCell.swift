@@ -16,14 +16,17 @@ class TrackCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    private let selectedBackView: UIView = {
+        let backView = UIView(frame: .zero)
+        backView.backgroundColor = Constants.UI.yandexColor
+        return backView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let backView = UIView(frame: .zero)
-        backView.layer.borderWidth = 3
-        backView.layer.borderColor = Constants.UI.yandexColor.cgColor
-        backView.layer.cornerRadius = 20
-        backView.backgroundColor = Constants.UI.yandexColor
-        selectedBackgroundView = backView
+        DesignUtils.styleViewCell(view: selectedBackView)
+        DesignUtils.styleViewCell(view: contentView)
+        selectedBackgroundView = selectedBackView
         contentView.addSubview(trackNameLabel)
     }
     
@@ -41,6 +44,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
         contentView.layer.borderWidth = 3
         contentView.layer.borderColor = Constants.UI.yandexColor.cgColor
         contentView.layer.cornerRadius = 20
+        
     }
     
     override func prepareForReuse() {
