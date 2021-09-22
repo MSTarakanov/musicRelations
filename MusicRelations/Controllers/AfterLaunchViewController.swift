@@ -40,8 +40,12 @@ class AfterLaunchViewController: UIViewController {
                 mainNavController.modalTransitionStyle = .crossDissolve
                 mainNavController.modalPresentationStyle = .fullScreen
                 mainNavController.navigationBar.isTranslucent = false
-                mainNavController.navigationBar.barTintColor = Constants.UI.yandexColor
-                mainNavController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+                let appearance = UINavigationBarAppearance()
+                appearance.configureWithOpaqueBackground()
+                appearance.backgroundColor = Constants.UI.yandexColor
+                appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+                mainNavController.navigationBar.standardAppearance = appearance
+                mainNavController.navigationBar.scrollEdgeAppearance = mainNavController.navigationBar.standardAppearance
                 mainNavController.navigationBar.tintColor = .white
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.present(mainNavController, animated: true, completion: nil)
