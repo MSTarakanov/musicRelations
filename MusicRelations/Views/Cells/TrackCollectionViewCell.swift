@@ -14,6 +14,11 @@ class TrackCollectionViewCell: UICollectionViewCell {
     private let loader = ImageLoader()
     private var onReuse: () -> () = {}
     
+    override var isSelected: Bool {
+        didSet {
+            changeAppearance()
+        }
+    }
     private let trackNameLabel: UILabel = {
         let label = UILabel()
         return label
@@ -28,6 +33,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
     private let labelsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.backgroundColor = .systemGreen
         return stackView
     }()
     
@@ -83,9 +89,19 @@ class TrackCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
     }
     
+    func changeAppearance() {
+        labelsStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = !isSelected
+        labelsStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: labelsStackView.bounds.height/2 + 10).isActive = isSelected
+        trackNameLabel.numberOfLines = isSelected ? 0 : 1
+        artistsLabel.numberOfLines = isSelected ? 0 : 1
+//        labelsStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = isSelected
+        
+    }
     
     
     func configureCell(track: TrackModel) {
+        print("me")
+        changeAppearance()
         trackNameLabel.text = track.trackName
         artistsLabel.text = track.artists.reduce("", {$0 == "" ? $0 + $1 : $0 + ", " + $1})
         if let url = URL(string: track.imageUrlWithSize100) {

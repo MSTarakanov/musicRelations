@@ -33,6 +33,9 @@ class TracksViewController: UIViewController {
         collectionView.backgroundColor = .white
         collectionView.alpha = 0
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.allowsSelection = true
+        collectionView.allowsMultipleSelection = true
+        collectionView.alwaysBounceVertical = true
         return collectionView
     }()
     
@@ -95,11 +98,14 @@ extension TracksViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView.indexPathsForSelectedItems?.contains(indexPath) == true {
+            return CGSize(width: view.frame.width - 20, height: 200)
+        }
         return CGSize(width: view.frame.width - 20, height: 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
+        //collectionView.deselectItem(at: indexPath, animated: true)
         print(indexPath)
     }
     
@@ -109,5 +115,16 @@ extension TracksViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         .init(top: 1, left: 0, bottom: 0, right: 0)
+    }
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+        collectionView.performBatchUpdates(nil)
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        collectionView.performBatchUpdates(nil)
+        return true
     }
 }

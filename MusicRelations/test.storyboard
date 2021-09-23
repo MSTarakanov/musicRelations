@@ -16,8 +16,32 @@
                     <view key="view" contentMode="scaleToFill" id="dJj-5p-W0i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cRF-W9-o4H">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAx-wH-3P3">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RM-gI-e25">
+                                        <rect key="frame" x="0.0" y="28.5" width="414" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="5X2-46-esE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cRF-W9-o4H" firstAttribute="top" secondItem="5X2-46-esE" secondAttribute="top" id="K9J-WJ-ExM"/>
+                            <constraint firstItem="cRF-W9-o4H" firstAttribute="leading" secondItem="5X2-46-esE" secondAttribute="leading" id="PEd-Pg-qBg"/>
+                            <constraint firstItem="5X2-46-esE" firstAttribute="trailing" secondItem="cRF-W9-o4H" secondAttribute="trailing" id="rdO-Ym-fre"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2Af-9e-fgC"/>
                 </viewController>
