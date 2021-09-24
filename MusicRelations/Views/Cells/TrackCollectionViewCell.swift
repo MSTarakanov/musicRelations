@@ -33,7 +33,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
     private let labelsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.backgroundColor = .systemGreen
+//        stackView.backgroundColor = .systemGreen
         return stackView
     }()
     
@@ -45,6 +45,11 @@ class TrackCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    private let genreLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        return label
+    }()
     
     private let selectedBackView: UIView = {
         let backView = UIView(frame: .zero)
@@ -60,6 +65,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
         DesignUtils.styleViewCell(view: contentView)
         contentView.addSubview(imageView)
         contentView.addSubview(labelsStackView)
+        contentView.addSubview(genreLabel)
         labelsStackView.addArrangedSubview(trackNameLabel)
         labelsStackView.addArrangedSubview(artistsLabel)
     }
@@ -82,29 +88,42 @@ class TrackCollectionViewCell: UICollectionViewCell {
         labelsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         labelsStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         
+        genreLabel.translatesAutoresizingMaskIntoConstraints = false
+        genreLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15
+        ).isActive = true
+        genreLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
         
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        genreLabel.text = nil
     }
     
     func changeAppearance() {
         labelsStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = !isSelected
         labelsStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: labelsStackView.bounds.height/2 + 10).isActive = isSelected
-        trackNameLabel.numberOfLines = isSelected ? 0 : 1
-        artistsLabel.numberOfLines = isSelected ? 0 : 1
+        trackNameLabel.numberOfLines = isSelected ? 3 : 1
+        artistsLabel.numberOfLines = isSelected ? 3 : 1
+        
+        genreLabel.isHidden = !isSelected
+        trackNameLabel.textColor = isSelected ? .white : .black
+        artistsLabel.textColor = isSelected ? #colorLiteral(red: 0.7764705882, green: 0.7764705882, blue: 0.7843137255, alpha: 1) : #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
 //        labelsStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = isSelected
         
     }
     
     
     func configureCell(track: TrackModel) {
-        print("me")
+//        print("me")
         changeAppearance()
         trackNameLabel.text = track.trackName
         artistsLabel.text = track.artists.reduce("", {$0 == "" ? $0 + $1 : $0 + ", " + $1})
-        if let url = URL(string: track.imageUrlWithSize100) {
+        if let UnwGenre = track.genre {
+            genreLabel.text = "Genre: " + UnwGenre
+        }
+        if let url = URL(string: track.imageUrlWithSize200) {
             let token = loader.loadImage(url) { result in
                 do {
                     let image = try result.get()
@@ -122,6 +141,4 @@ class TrackCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-    
-    
 }
