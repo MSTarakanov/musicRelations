@@ -14,19 +14,17 @@ class UserTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.accessoryType = .disclosureIndicator
+        configureSelectedBackgroundView()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
+    
+    private func configureSelectedBackgroundView() {
+        let selectedBackView = UIView()
+        selectedBackView.backgroundColor = Constants.UI.yandexColor
+        self.selectedBackgroundView = selectedBackView
     }
     
     func setUpCell(for user: UserModel) {
         self.textLabel?.text = user.username
-        self.accessoryType = .disclosureIndicator
-        // add selection backgroundView
-        let selectedBackView = UIView()
-        selectedBackView.backgroundColor = Constants.UI.yandexColor
-        self.selectedBackgroundView = selectedBackView
     }
 }

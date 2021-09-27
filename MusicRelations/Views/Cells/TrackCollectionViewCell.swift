@@ -33,7 +33,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
     private let labelsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-//        stackView.backgroundColor = .systemGreen
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -42,27 +42,30 @@ class TrackCollectionViewCell: UICollectionViewCell {
         imageView.image = #imageLiteral(resourceName: "squarePlaceholder")
         imageView.layer.borderWidth = 2
         imageView.layer.borderColor = #colorLiteral(red: 0.7764705882, green: 0.7764705882, blue: 0.7843137255, alpha: 1)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private let genreLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let selectedBackView: UIView = {
         let backView = UIView(frame: .zero)
         backView.backgroundColor = Constants.UI.yandexColor
+        DesignUtils.styleViewCell(view: backView)
         return backView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        DesignUtils.styleViewCell(view: selectedBackView)
+        
         DesignUtils.styleViewCell(view: contentView)
+        
         selectedBackgroundView = selectedBackView
-        DesignUtils.styleViewCell(view: contentView)
         contentView.addSubview(imageView)
         contentView.addSubview(labelsStackView)
         contentView.addSubview(genreLabel)
@@ -76,19 +79,16 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+
         imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15).isActive = true
         imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15).isActive = true
         imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
         imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
         
-        labelsStackView.translatesAutoresizingMaskIntoConstraints = false
         labelsStackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10).isActive = true
         labelsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         labelsStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         
-        genreLabel.translatesAutoresizingMaskIntoConstraints = false
         genreLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15
         ).isActive = true
         genreLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
@@ -110,20 +110,17 @@ class TrackCollectionViewCell: UICollectionViewCell {
         genreLabel.isHidden = !isSelected
         trackNameLabel.textColor = isSelected ? .white : .black
         artistsLabel.textColor = isSelected ? #colorLiteral(red: 0.7764705882, green: 0.7764705882, blue: 0.7843137255, alpha: 1) : #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-//        labelsStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = isSelected
-        
     }
     
     
     func configureCell(track: TrackModel) {
-//        print("me")
         changeAppearance()
         trackNameLabel.text = track.trackName
         artistsLabel.text = track.artists.reduce("", {$0 == "" ? $0 + $1 : $0 + ", " + $1})
         if let UnwGenre = track.genre {
             genreLabel.text = "Genre: " + UnwGenre
         }
-        if let url = URL(string: track.imageUrlWithSize200) {
+        if let url = URL(string: track.imageUrl(with: .average)) {
             let token = loader.loadImage(url) { result in
                 do {
                     let image = try result.get()

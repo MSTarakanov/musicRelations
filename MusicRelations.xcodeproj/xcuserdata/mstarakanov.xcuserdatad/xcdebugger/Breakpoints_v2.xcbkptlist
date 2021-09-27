@@ -142,8 +142,8 @@
             filePath = "MusicRelations/Views/Cells/PlaylistTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "configureCell(by:)"
             landmarkType = "7">
             <Locations>

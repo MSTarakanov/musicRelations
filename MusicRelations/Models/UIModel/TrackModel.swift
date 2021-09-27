@@ -12,7 +12,6 @@ struct TrackModel {
     let clearImageUrl: String
     let artists: [String]
     let genre: String?
-    // add duration/genre/position
     
     init?(trackElement: TrackElement) {
         guard let trackName = trackElement.track?.title,
@@ -30,8 +29,14 @@ struct TrackModel {
         self.genre = genre
     }
     
-    var imageUrlWithSize200: String {
-        "https://" + clearImageUrl + "200x200"
+    enum playlistImageSize: Int {
+        case small = 100
+        case average = 200
+        case max = 1000
+    }
+    
+    func imageUrl(with size: playlistImageSize) -> String {
+        "https://" + self.clearImageUrl + "\(size)x\(size)"
     }
     
     static func getTracks(from playlistModel: PlaylistModel, completion: @escaping ([TrackModel]) -> Void) {
