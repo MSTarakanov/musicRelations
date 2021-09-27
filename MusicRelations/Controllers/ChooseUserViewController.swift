@@ -15,7 +15,6 @@ class ChooseUserViewController: UIViewController {
     @IBOutlet weak var usersTableView: UITableView!
     
     // MARK: Data -
-//    private var usersPlaylistsCache: [UserModel:PlaylistModel]?
     
     private var users: [UserModel] = PlistHandler.getUsers() {
         didSet {

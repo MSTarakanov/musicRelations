@@ -24,6 +24,7 @@ class TracksViewController: UIViewController {
         let indicator = UIActivityIndicatorView(style: .large)
         indicator.color = Constants.UI.yandexColor
         indicator.hidesWhenStopped = true
+        indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.startAnimating()
         return indicator
     }()
@@ -36,6 +37,7 @@ class TracksViewController: UIViewController {
         collectionView.allowsSelection = true
         collectionView.allowsMultipleSelection = true
         collectionView.alwaysBounceVertical = true
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
@@ -43,11 +45,14 @@ class TracksViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        
         tracksCollectionView.delegate = self
         tracksCollectionView.dataSource = self
         tracksCollectionView.register(TrackCollectionViewCell.self, forCellWithReuseIdentifier: TrackCollectionViewCell.id)
+        
         view.addSubview(activityIndicator)
         view.addSubview(tracksCollectionView)
+        
         if let playlist = playlist {
             if let tracks = TracksViewController.playlistsTracksLoaded[playlist] {
                 self.tracks = tracks
@@ -70,20 +75,14 @@ class TracksViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        tracksCollectionView.translatesAutoresizingMaskIntoConstraints = false
         tracksCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tracksCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         tracksCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         tracksCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
     }
-
-    
-    
-
 }
 
 extension TracksViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

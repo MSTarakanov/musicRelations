@@ -27,6 +27,7 @@ class PlaylistsViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.alpha = 0
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
@@ -78,8 +79,7 @@ class PlaylistsViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         tableViewActivityIndicator.center = view.center
-
-        playlistsTableView.translatesAutoresizingMaskIntoConstraints = false
+       
         playlistsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         playlistsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         playlistsTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
