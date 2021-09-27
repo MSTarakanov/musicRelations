@@ -51,7 +51,7 @@ class YandexApiCaller {
     }
     
     class func getTracks(from playlist: PlaylistModel, completion: @escaping (TracksResponseModel) -> Void) {
-        let urlString = "\(Constants.Network.usersUrl)\(playlist.ownerLogin)/playlists/\(playlist.kind)"
+        let urlString = Constants.Network.playlistUrl(with: playlist)
         guard let url = URL(string: urlString) else { return }
         let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {

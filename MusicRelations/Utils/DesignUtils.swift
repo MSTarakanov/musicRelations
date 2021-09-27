@@ -13,7 +13,7 @@ class DesignUtils {
     static func styleViewCell(view: UIView) {
         view.layer.borderWidth = 3
         view.layer.borderColor = Constants.UI.yandexColor.cgColor
-        view.layer.cornerRadius = 20
+        view.layer.cornerRadius = 12
         //view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMinYCorner]
     }
 }
