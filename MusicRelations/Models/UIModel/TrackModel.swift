@@ -35,8 +35,9 @@ struct TrackModel {
         case max = 1000
     }
     
-    func imageUrl(with size: playlistImageSize) -> String {
-        "https://" + self.clearImageUrl + "\(size)x\(size)"
+    func imageUrl(with imageSize: playlistImageSize) -> String {
+        let rawSize = imageSize.rawValue
+        return "https://" + self.clearImageUrl + "\(rawSize)x\(rawSize)"
     }
     
     static func getTracks(from playlistModel: PlaylistModel, completion: @escaping ([TrackModel]) -> Void) {
