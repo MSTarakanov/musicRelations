@@ -70,59 +70,5 @@ class YandexApiCaller {
         }
         dataTask.resume()
     }
-    
-    class func getTracksIdsFromLikes(by user: UserModel, completion: @escaping (LikedTracksResponseModel) -> Void) {
-        let urlString = Constants.Network.likedPlaylistUrl(by: user)
-        if let url = URL(string: urlString) {
-            let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
-                if let error = error {
-                    print(error)
-                    return
-                }
-                if let data = data {
-                    do {
-                        let tracksFromLikesResponse = try JSONDecoder().decode(LikedTracksResponseModel.self, from: data)
-                        print(tracksFromLikesResponse)
-                        completion(tracksFromLikesResponse)
-                    } catch {
-                        print(error)
-                    }
-                }
-            }
-            dataTask.resume()
-        }
-    }
-    
-    class func getLikedTracks(by user: UserModel, completion: @escaping ([TrackResponseModel]) -> Void) {
-        YandexApiCaller.getTracksIdsFromLikes(by: user) { likedTracksResponseModel in
-            if let tracks = likedTracksResponseModel.result?.library?.tracks {
-                var tracksModels = [TrackResponseModel]()
-                for track in tracks {
-                    if let trackId = track.id {
-                        let urlString = Constants.Network.tracksUrl + trackId
-                        if let url = URL(string: urlString) {
-                            let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
-                                if let error = error {
-                                    print(error)
-                                    return
-                                }
-                                if let data = data {
-                                    do {
-                                        let trackFromLikesResponse = try JSONDecoder().decode(TrackResponseModel.self, from: data)
-                                        print(trackFromLikesResponse)
-                                        tracksModels.append(trackFromLikesResponse)
-                                    } catch {
-                                        print(error)
-                                    }
-                                }
-                            }
-                            dataTask.resume()
-                        }
-                    }
-                }
-                completion(tracksModels)
-            }
-        }
-    }
 }
 

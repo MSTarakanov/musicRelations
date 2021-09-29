@@ -64,18 +64,4 @@ struct TrackModel {
             }
         }
     }
-    
-    static func getLikedTracks(from userModel: UserModel, completion: @escaping ([TrackModel]) -> Void) {
-        YandexApiCaller.getLikedTracks(by: userModel) { trackResponseModels in
-            var trackModels = [TrackModel]()
-            for trackResponseModel in trackResponseModels {
-                if let trackResult = trackResponseModel.result?.first {
-                    if let trackModel = TrackModel(trackResult: trackResult) {
-                        trackModels.append(trackModel)
-                    }
-                }
-            }
-            completion(trackModels)
-        }
-    }
 }
