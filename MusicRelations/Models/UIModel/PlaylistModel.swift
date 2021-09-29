@@ -30,6 +30,14 @@ struct PlaylistModel: Hashable {
         self.kind = kind
     }
     
+    init(likesFrom userModel: UserModel) {
+        self.playlistName = "Избранное"
+        self.ownerLogin = userModel.userId
+        self.playlistImageUrl = "avatars.yandex.net/get-music-user-playlist/28719/291769700.1017.3715/"
+        self.trackAmount = 0
+        self.kind = 3
+    }
+    
     static func getPlaylists(from responseModel: PlaylistsResponseModel) -> [PlaylistModel] {
         var playlists = [PlaylistModel]()
         if let result = responseModel.result {

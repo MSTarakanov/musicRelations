@@ -147,10 +147,11 @@ extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension PlaylistsViewController: LikedAlbumHeaderDelegate {
     func viewDidTap() {
-        YandexApiCaller.getLikedTracks(by: user!) { op in
-            print(op)
-            
-            print(op)
-        }
+        if let user = user {
+            let tracksVC = TracksViewController()
+            let likesPlaylist = PlaylistModel(likesFrom: user)
+            tracksVC.playlist = likesPlaylist
+            navigationController?.pushViewController(tracksVC, animated: true)
+        }  
     }
 }
