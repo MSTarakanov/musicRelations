@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0913F34527048CE0007E3D86 /* LikedTracksResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913F34427048CE0007E3D86 /* LikedTracksResponseModel.swift */; };
+		0913F34727048F25007E3D86 /* TrackResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913F34627048F25007E3D86 /* TrackResponseModel.swift */; };
 		0946F00626EA5C7E00B7AB48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946F00526EA5C7E00B7AB48 /* AppDelegate.swift */; };
 		0946F00826EA5C7E00B7AB48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946F00726EA5C7E00B7AB48 /* SceneDelegate.swift */; };
 		0946F00A26EA5C7E00B7AB48 /* ChooseUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946F00926EA5C7E00B7AB48 /* ChooseUserViewController.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0913F34427048CE0007E3D86 /* LikedTracksResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedTracksResponseModel.swift; sourceTree = "<group>"; };
+		0913F34627048F25007E3D86 /* TrackResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackResponseModel.swift; sourceTree = "<group>"; };
 		0946F00226EA5C7E00B7AB48 /* MusicRelations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicRelations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0946F00526EA5C7E00B7AB48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0946F00726EA5C7E00B7AB48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 				0946F09026EAD3A200B7AB48 /* UserResponseModel.swift */,
 				098D76F726EF7D0800088D2A /* PlaylistsResponseModel.swift */,
 				09E7605426F90836009ECB6A /* TracksResponseModel.swift */,
+				0913F34427048CE0007E3D86 /* LikedTracksResponseModel.swift */,
+				0913F34627048F25007E3D86 /* TrackResponseModel.swift */,
 			);
 			path = ApiModels;
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 				09B0BD4D26F97F2800903650 /* DesignUtils.swift in Sources */,
 				0946F01026EA5C7E00B7AB48 /* MusicRelations.xcdatamodeld in Sources */,
 				09E7604C26F0058D009ECB6A /* LikedAlbumHeader.swift in Sources */,
+				0913F34727048F25007E3D86 /* TrackResponseModel.swift in Sources */,
 				098D76FD26EF9B5D00088D2A /* UserModel.swift in Sources */,
 				098D769E26EC096500088D2A /* Constants.swift in Sources */,
 				098D76F026EEAAF800088D2A /* UIExtensions.swift in Sources */,
@@ -317,6 +324,7 @@
 				09E7605726F90C9A009ECB6A /* TrackModel.swift in Sources */,
 				0946F00826EA5C7E00B7AB48 /* SceneDelegate.swift in Sources */,
 				09E7605326F6A7BE009ECB6A /* ImageLoader.swift in Sources */,
+				0913F34527048CE0007E3D86 /* LikedTracksResponseModel.swift in Sources */,
 				098D769D26EC094700088D2A /* UserResponseModel.swift in Sources */,
 				09E7605526F90836009ECB6A /* TracksResponseModel.swift in Sources */,
 				09E7605926F90EAF009ECB6A /* TracksViewController.swift in Sources */,

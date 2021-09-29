@@ -13,9 +13,14 @@ struct Constants {
         private init () {}
         static let baseUrl = "https://api.music.yandex.net/"
         static let usersUrl = baseUrl + "users/"
+        static let tracksUrl = baseUrl + "tracks/"
         
         static func playlistUrl(with playlist: PlaylistModel) -> String {
             return usersUrl + playlist.ownerLogin + "/playlists/" + String(playlist.kind)
+        }
+        
+        static func likedPlaylistUrl(by user: UserModel) -> String {
+            return usersUrl + user.userId + "/likes/tracks"
         }
         
     }
