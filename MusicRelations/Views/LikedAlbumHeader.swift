@@ -7,9 +7,16 @@
 
 import UIKit
 
+protocol LikedAlbumHeaderDelegate: AnyObject {
+    func viewDidTap()
+}
+
+
 class LikedAlbumHeader: UITableViewHeaderFooterView {
 
     static var id = "LikedAlbumHeaderID"
+    
+    weak var delegate: LikedAlbumHeaderDelegate?
     
     // MARK: UIViews -
     private let imageView: UIImageView = {
@@ -49,6 +56,8 @@ class LikedAlbumHeader: UITableViewHeaderFooterView {
         contentView.addSubview(stackView)
         contentView.backgroundColor = .white
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewDidTap))
+        addGestureRecognizer(tapGesture)
     }
     
     required init?(coder: NSCoder) {
@@ -66,5 +75,10 @@ class LikedAlbumHeader: UITableViewHeaderFooterView {
         albumLabel.heightAnchor.constraint(equalToConstant: 20).isActive                                = true
         
         stackView.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+    
+    @objc
+    func viewDidTap() {
+        delegate?.viewDidTap()
     }
 }

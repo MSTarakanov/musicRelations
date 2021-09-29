@@ -71,7 +71,7 @@ class YandexApiCaller {
         dataTask.resume()
     }
     
-    class func getTracksFromLikes(by user: UserModel, completion: @escaping (LikedTracksResponseModel) -> Void) {
+    class func getTracksIdsFromLikes(by user: UserModel, completion: @escaping (LikedTracksResponseModel) -> Void) {
         let urlString = Constants.Network.likedPlaylistUrl(by: user)
         if let url = URL(string: urlString) {
             let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
@@ -94,7 +94,7 @@ class YandexApiCaller {
     }
     
     class func getLikedTracks(by user: UserModel, completion: @escaping ([TrackResponseModel]) -> Void) {
-        YandexApiCaller.getTracksFromLikes(by: user) { likedTracksResponseModel in
+        YandexApiCaller.getTracksIdsFromLikes(by: user) { likedTracksResponseModel in
             if let tracks = likedTracksResponseModel.result?.library?.tracks {
                 var tracksModels = [TrackResponseModel]()
                 for track in tracks {

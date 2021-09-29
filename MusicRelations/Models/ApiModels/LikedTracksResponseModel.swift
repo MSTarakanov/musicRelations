@@ -22,7 +22,7 @@ struct Library: Codable {
 // MARK: - Track
 struct Track: Codable {
     let id, albumID: String?
-    let timestamp: Date?
+    let timestamp: String?
 
     enum CodingKeys: String, CodingKey {
         case id

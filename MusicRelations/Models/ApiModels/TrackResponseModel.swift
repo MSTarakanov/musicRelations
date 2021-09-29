@@ -5,7 +5,7 @@ import Foundation
 
 // MARK: - TrackResponseModel
 struct TrackResponseModel: Codable {
-    let invocationInfo: InvocationInfo?
+    let invocationInfo: TrackInvocationInfo?
     let result: [TrackResult]?
 }
 
@@ -40,6 +40,17 @@ struct TrackResult: Codable {
         case ogImage, lyricsAvailable, type, rememberPosition
         case backgroundVideoURI = "backgroundVideoUri"
         case trackSharingFlag
+    }
+}
+
+struct TrackInvocationInfo: Codable {
+    let reqID, hostname: String?
+    let execDurationMillis: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case reqID = "req-id"
+        case hostname
+        case execDurationMillis = "exec-duration-millis"
     }
 }
 

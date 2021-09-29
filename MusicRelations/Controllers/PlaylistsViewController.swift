@@ -131,7 +131,8 @@ extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: LikedAlbumHeader.id)
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: LikedAlbumHeader.id) as! LikedAlbumHeader
+        header.delegate = self
         return header
     }
     
@@ -141,5 +142,13 @@ extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
+    }
+}
+
+extension PlaylistsViewController: LikedAlbumHeaderDelegate {
+    func viewDidTap() {
+        YandexApiCaller.getLikedTracks(by: user!) { op in
+            print(op)
+        }
     }
 }
