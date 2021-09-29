@@ -145,6 +145,7 @@ extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: LikedAlbumHeaderDelegate extension -
 extension PlaylistsViewController: LikedAlbumHeaderDelegate {
     func viewDidTap() {
         if let user = user {
