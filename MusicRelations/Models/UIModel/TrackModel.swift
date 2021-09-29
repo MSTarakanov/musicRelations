@@ -29,6 +29,22 @@ struct TrackModel {
         self.genre = genre
     }
     
+    init?(trackResult: TrackResult) {
+        guard let trackName = trackResult.title,
+              let clearImageUrl = trackResult.ogImage,
+              let artists = trackResult.artists,
+              let genre = trackResult.albums?.first?.genre
+        else {
+            return nil
+        }
+        self.trackName = trackName
+        self.clearImageUrl = clearImageUrl.trimmingCharacters(in: CharacterSet(charactersIn: "%"))
+        self.artists = artists.compactMap({ artist in
+            artist.name
+        })
+        self.genre = genre
+    }
+    
     enum playlistImageSize: Int {
         case small = 100
         case average = 200
@@ -47,5 +63,19 @@ struct TrackModel {
                 completion(tracksFromApi)
             }
         }
-    }    
+    }
+    
+    static func getLikedTracks(from userModel: UserModel, completion: @escaping ([TrackModel]) -> Void) {
+        YandexApiCaller.getLikedTracks(by: userModel) { trackResponseModels in
+            var trackModels = [TrackModel]()
+            for trackResponseModel in trackResponseModels {
+                if let trackResult = trackResponseModel.result?.first {
+                    if let trackModel = TrackModel(trackResult: trackResult) {
+                        trackModels.append(trackModel)
+                    }
+                }
+            }
+            completion(trackModels)
+        }
+    }
 }
