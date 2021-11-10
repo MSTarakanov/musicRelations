@@ -16,3 +16,32 @@
 - Animated LaunchScreen
 - ActivityIndicators
 - Alerts
+---
+
+<kbd>
+  <img src="/readme_sources/1.png" style="width:300px; border: 5px solid #555;"/>
+</kbd>
+
+<kbd>
+  <img src="/readme_sources/2.png" style="width:300px; border: 5px solid #555;"/>
+</kbd>
+
+<kbd>
+  <img src="/readme_sources/3.png" style="width:300px; border: 5px solid #555;"/>
+</kbd>
+
+<kbd>
+  <img src="/readme_sources/4.png" style="width:300px; border: 5px solid #555;"/>
+</kbd>
+
+<kbd>
+  <img src="/readme_sources/5.png" style="width:300px; border: 5px solid #555;"/>
+</kbd>
+
+<kbd>
+  <img src="/readme_sources/6.png" style="width:300px; border: 5px solid #555;"/>
+</kbd>
+
+<kbd>
+  <img src="/readme_sources/7.png" style="width:300px; border: 5px solid #555;"/>
+</kbd>
